@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éclat Naturals – Luxury Botanical Beauty</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- THEME VARIABLES ---------- */
+:root{
+  --font-head:'Cinzel', serif;
+  --font-body:'Lato', sans-serif;
+
+  /* Day Palette */
+  --day-bg:#fafafa;
+  --day-text:#1b1b1b;
+  --day-muted:#7a7a7a;
+  --day-accent:#d4af37;
+
+  /* Night Palette */
+  --night-bg:#0e0e0e;
+  --night-text:#f5f5f5;
+  --night-muted:#9f9f9f;
+  --night-accent:#50d890;
+}
+
+/* ---------- RESET ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+img{max-width:100%;display:block}
+body{
+  font-family:var(--font-body);
+  background:var(--day-bg);
+  color:var(--day-text);
+  line-height:1.6;
+  scroll-behavior:smooth;
+  transition:background .4s,color .4s;
+}
+
+/* Theme switching */
+html[data-theme="night"]{
+  background:var(--night-bg);
+  color:var(--night-text);
+}
+html[data-theme="night"] .muted{color:var(--night-muted);}
+html[data-theme="night"] a{color:var(--night-text);}
+html[data-theme="night"] .btn{
+  background:linear-gradient(145deg,var(--night-accent),#3bc17a);
+  box-shadow:0 4px 8px rgba(0,0,0,0.6), inset 0 -2px 4px rgba(0,0,0,0.6);
+}
+html[data-theme="night"] .btn:hover{box-shadow:inset 0 4px 6px rgba(0,0,0,0.6);transform:translateY(2px);}
+
+/* ---------- HEADER & NAV ---------- */
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:saturate(180%) blur(10px);
+  transition:background .4s;
+}
+html[data-theme="night"] header{background:rgba(14,14,14,0.8);}
+nav{
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 1.2rem;
+}
+.logo{
+  font-family:var(--font-head);
+  font-size:1.75rem;
+  letter-spacing:1px;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1.5rem;
+}
+nav a{
+  text-decoration:none;
+  color:inherit;
+  font-weight:700;
+  position:relative;
+}
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;bottom:-3px;
+  width:0;height:2px;
+  background:var(--day-accent);
+  transition:width .3s;
+}
+nav a:hover::after{width:100%;}
+/* theme toggle */
+.toggle{
+  border:none;background:none;cursor:pointer;
+  font-size:1.4rem;line-height:1;
+  color:inherit;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:90vh;
+  background:url('https://images.unsplash.com/photo-1522335040-4f18124bab51?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+  position:relative;
+}
+.hero::after{
+  content:'';
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0.35);
+}
+.hero-content{
+  position:relative;z-index:1;
+  max-width:700px;padding:2rem;
+  color:#fff;
+  animation:fadeSlide 1s ease-out forwards;
+}
+.hero h1{
+  font-family:var(--font-head);
+  font-size:3rem;margin-bottom:1rem;
+}
+.hero p{font-size:1.2rem;margin-bottom:2rem;}
+.btn{
+  background:linear-gradient(145deg,var(--day-accent),#b9972e);
+  color:#fff;border:none;
+  padding:1rem 2.5rem;
+  font-size:1rem;font-weight:700;
+  border-radius:6px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.4), inset 0 -2px 4px rgba(0,0,0,0.4);
+  cursor:pointer;
+  transition:transform .15s,box-shadow .15s;
+}
+.btn:hover{box-shadow:inset 0 4px 6px rgba(0,0,0,0.4);transform:translateY(2px);}
+.btn:focus-visible{outline:3px solid var(--day-accent);}
+
+/* ---------- SECTION COMMON ---------- */
+section{padding:4rem 1.2rem;}
+.section-title{
+  font-family:var(--font-head);
+  font-size:2.2rem;
+  text-align:center;
+  margin-bottom:2.5rem;
+}
+.container{max-width:1300px;margin:auto;}
+
+/* ---------- PRODUCTS ---------- */
+.product-grid{
+  display:grid;gap:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.product{
+  background:rgba(255,255,255,0.85);
+  border-radius:10px;
+  padding:1rem;
+  text-align:center;
+  transition:transform .4s;
+  box-shadow:0 4px 8px rgba(0,0,0,0.07);
+}
+html[data-theme="night"] .product{background:rgba(20,20,20,0.85);}
+.product:hover{transform:translateY(-6px);}
+.product img{border-radius:8px;margin-bottom:1rem;}
+.product h3{font-family:var(--font-head);margin-bottom:.3rem;font-size:1.25rem;}
+.price{color:var(--day-muted);margin-bottom:.8rem;}
+html[data-theme="night"] .price{color:var(--night-muted);}
+.product .btn{width:100%;}
+
+/* ---------- BRAND STORY ---------- */
+.story{
+  display:flex;flex-direction:column;gap:2rem;align-items:center;
+}
+.story img{max-width:500px;border-radius:12px;flex:1;}
+.story-text{flex:1;max-width:600px;}
+.story-text h3{font-family:var(--font-head);font-size:1.8rem;margin-bottom:1rem;}
+.story-text p{margin-bottom:1rem;color:var(--day-muted);}
+html[data-theme="night"] .story-text p{color:var(--night-muted);}
+
+/* ---------- TESTIMONIALS ---------- */
+.testimonials{background:#f3f3f3;position:relative;overflow:hidden;}
+html[data-theme="night"] .testimonials{background:#121212;}
+.carousel{
+  display:flex;width:300%;animation:slide 18s infinite;
+}
+.testimonial{flex:0 0 100%;padding:0 1rem;max-width:700px;margin:auto;text-align:center;}
+.testimonial blockquote{font-style:italic;margin-bottom:1rem;font-size:1.1rem;}
+.testimonial cite{font-weight:700;color:var(--day-muted);}
+html[data-theme="night"] .testimonial cite{color:var(--night-muted);}
+@keyframes slide{
+  0%,20%{transform:translateX(0);}
+  25%,45%{transform:translateX(-100%);}
+  50%,70%{transform:translateX(-200%);}
+  75%,100%{transform:translateX(0);}
+}
+
+/* ---------- NEWSLETTER ---------- */
+.newsletter{
+  text-align:center;
+  background:var(--day-accent);
+  color:#fff;
+  padding:3rem 1rem;
+  border-radius:12px;
+}
+html[data-theme="night"] .newsletter{background:var(--night-accent);}
+.newsletter h3{font-family:var(--font-head);font-size:1.8rem;margin-bottom:1rem;}
+.newsletter form{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:1rem;}
+.newsletter input{
+  padding:.9rem 1rem;width:280px;border:none;border-radius:6px;
+  font-size:1rem;
+}
+.newsletter button{padding:.9rem 2rem;font-size:1rem;border:none;border-radius:6px;font-weight:700;cursor:pointer;background:#1b1b1b;color:#fff;}
+.newsletter button:hover{opacity:.9;}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#000;color:#fff;
+  text-align:center;padding:2rem 1rem;font-size:.9rem;
+}
+
+/* ---------- ANIMATIONS ---------- */
+.fade-in{opacity:0;transform:translateY(20px);transition:.8s;}
+.fade-in.visible{opacity:1;transform:none;}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
+
+/* ---------- MEDIA QUERIES ---------- */
+@media(min-width:800px){
+  .hero h1{font-size:4rem;}
+  .story{flex-direction:row;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Primary Navigation">
+    <div class="logo">Éclat Naturals</div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="toggle" aria-label="Toggle Dark Mode" id="themeToggle">☾</button>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-content">
+      <h1>Botanical Luxury, Perfected</h1>
+      <p>Indulge in nature’s finest ingredients crafted into exquisite skincare and aromatherapy rituals.</p>
+      <button class="btn" aria-label="Shop Now">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" aria-label="Product Showcase">
+    <h2 class="section-title">Bestselling Collection</h2>
+    <div class="container product-grid">
+      <article class="product fade-in" aria-label="Rose Gold Face Oil">
+        <img src="https://images.unsplash.com/photo-1621231120892-35b706b6a15a?auto=format&fit=crop&w=600&q=80" alt="Rose Gold Face Oil bottle">
+        <h3>Rose Gold Face Oil</h3>
+        <p class="price">$180</p>
+        <button class="btn" aria-label="Add Rose Gold Face Oil to cart">Add to Cart</button>
+      </article>
+      <article class="product fade-in" aria-label="Emerald Hydration Serum">
+        <img src="https://images.unsplash.com/photo-1617635271155-71631ad91e96?auto=format&fit=crop&w=600&q=80" alt="Emerald Hydration Serum bottle">
+        <h3>Emerald Hydration Serum</h3>
+        <p class="price">$210</p>
+        <button class="btn" aria-label="Add Emerald Hydration Serum to cart">Add to Cart</button>
+      </article>
+      <article class="product fade-in" aria-label="Silken Jasmine Mist">
+        <img src="https://images.unsplash.com/photo-1612630360185-5f02ddb6fb26?auto=format&fit=crop&w=600&q=80" alt="Silken Jasmine Mist bottle">
+        <h3>Silken Jasmine Mist</h3>
+        <p class="price">$120</p>
+        <button class="btn" aria-label="Add Silken Jasmine Mist to cart">Add to Cart</button>
+      </article>
+      <article class="product fade-in" aria-label="Lavender Dream Balm">
+        <img src="https://images.unsplash.com/photo-1571842462117-f40892d12d76?auto=format&fit=crop&w=600&q=80" alt="Lavender Dream Balm jar">
+        <h3>Lavender Dream Balm</h3>
+        <p class="price">$95</p>
+        <button class="btn" aria-label="Add Lavender Dream Balm to cart">Add to Cart</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section id="story" aria-label="Our Story">
+    <h2 class="section-title">Our Holistic Philosophy</h2>
+    <div class="container story">
+      <img src="https://images.unsplash.com/photo-1556228578-6e50a69f00a0?auto=format&fit=crop&w=800&q=80" alt="Botanicals laid out on marble">
+      <div class="story-text">
+        <h3>Crafted with Reverence for Nature</h3>
+        <p>Every Éclat Naturals creation is a symphony of sustainably harvested botanicals, meticulously blended to nurture skin and spirit alike.</p>
+        <p>We partner with ethical farms across the globe, ensuring each ingredient is of the highest quality and purity. Our artisans hand-pour every batch in small numbers, guaranteeing unmatched excellence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials" aria-label="Testimonials">
+    <h2 class="section-title">Words from Devotees</h2>
+    <div class="carousel" role="list">
+      <div class="testimonial" role="listitem">
+        <blockquote>“The Emerald Serum is an elixir of youth. My skin glows like never before.”</blockquote>
+        <cite>— Isabella R.</cite>
+      </div>
+      <div class="testimonial" role="listitem">
+        <blockquote>“A sensory escape. The Lavender Balm melts stress away within seconds.”</blockquote>
+        <cite>— Marcus V.</cite>
+      </div>
+      <div class="testimonial" role="listitem">
+        <blockquote>“Luxury without compromise. Pure ingredients, divine results.”</blockquote>
+        <cite>— Delilah S.</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter container" aria-label="Newsletter">
+    <h3>Join the Éclat Circle</h3>
+    <p class="muted">Exclusive offers, botanical insights, and early product drops—directly to your inbox.</p>
+    <form>
+      <input type="email" placeholder="Your email address" aria-label="Email Address" required>
+      <button type="submit" aria-label="Subscribe">Subscribe</button>
+    </form>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <p>&copy; 2024 Éclat Naturals. Crafted with passion and respect for Mother Earth.</p>
+</footer>
+
+<script>
+/* Theme Toggle */
+const toggle=document.getElementById('themeToggle');
+toggle.addEventListener('click',()=>{
+  const html=document.documentElement;
+  const isNight=html.getAttribute('data-theme')==='night';
+  html.setAttribute('data-theme',isNight?'day':'night');
+  toggle.textContent=isNight?'☾':'☀️';
+});
+
+/* Intersection Observer for animations */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
