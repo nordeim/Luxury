@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éléva | Luxury Natural Beauty & Aromatherapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #f8f5f0;
+            --secondary: #e8e4dd;
+            --text: #3a3a3a;
+            --accent: #c8a97e;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--primary);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 0.5em;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--accent);
+            color: var(--white);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn:hover {
+            background-color: #b69768;
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: var(--accent);
+            margin: 0.5rem auto 0;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(248, 245, 240, 0.9);
+            backdrop-filter: blur(5px);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 1px;
+        }
+        
+        .nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            padding: 1rem 0;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        nav.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nav-item {
+            margin: 0.5rem 0;
+        }
+        
+        .nav-link {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1615320367010-db2a6c0833b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.7s;
+        }
+        
+        .hero .btn {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 4rem 0;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .product-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .product-btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonial-track {
+            display: flex;
+            width: 300%;
+            transition: transform 0.5s ease;
+            animation: testimonialSlide 15s infinite;
+        }
+        
+        .testimonial-slide {
+            width: calc(100% / 3);
+            padding: 0 1rem;
+            flex-shrink: 0;
+        }
+        
+        .testimonial {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -1rem;
+            left: -0.5rem;
+        }
+        
+        .testimonial-text::after {
+            bottom: -1.5rem;
+            right: -0.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 500;
+        }
+        
+        @keyframes testimonialSlide {
+            0%, 25% {
+                transform: translateX(0);
+            }
+            33%, 58% {
+                transform: translateX(-33.333%);
+            }
+            66%, 91% {
+                transform: translateX(-66.666%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .newsletter-input {
+            padding: 0.8rem;
+            border: 1px solid var(--secondary);
+            background-color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            display: block;
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent);
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-toggle {
+                display: none;
+            }
+            
+            nav {
+                position: static;
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+                padding: 0;
+                background-color: transparent;
+            }
+            
+            .nav-list {
+                flex-direction: row;
+            }
+            
+            .nav-item {
+                margin: 0 0.5rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .newsletter-form {
+                flex-direction: row;
+            }
+            
+            .newsletter-input {
+                flex: 1;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Éléva</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="#newsletter" class="nav-link">Subscribe</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Luxury Derived From Nature</h1>
+                <p>Experience our premium collection of natural beauty and aromatherapy products, crafted with the finest botanical ingredients for holistic wellbeing.</p>
+                <a href="#products" class="btn">Explore Collection</a>
+            </div>
+        </section>
+        
+        <section id="products" class="products">
+            <div class="container">
+                <h2 class="section-title">Our Collection</h2>
+                <div class="product-grid">
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rejuvenating Rose Facial Oil" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Rejuvenating Rose Facial Oil</h3>
+                            <p class="product-price">$78</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1602409339189-2d940dabb279?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Lavender Dreams Sleep Mist" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Lavender Dreams Sleep Mist</h3>
+                            <p class="product-price">$45</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1601055903647-ddf1ee9701b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Citrus Glow Body Serum" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Citrus Glow Body Serum</h3>
+                            <p class="product-price">$65</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mountain Pine Bath Elixir" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Mountain Pine Bath Elixir</h3>
+                            <p class="product-price">$52</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1598662975215-2a6536be46a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jasmine & Neroli Night Cream" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Jasmine & Neroli Night Cream</h3>
+                            <p class="product-price">$86</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card fade-in">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Bergamot Diffuser Blend" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">Bergamot Diffuser Blend</h3>
+                            <p class="product-price">$48</p>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <div class="testimonial-slider fade-in">
+                    <div class="testimonial-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <p class="testimonial-text">The Rejuvenating Rose Facial Oil has transformed my skin. After just two weeks, my complexion is noticeably more radiant and balanced. The scent alone is a luxurious experience!</p>
+                                <p class="testimonial-author">— Emma Wilson</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <p class="testimonial-text">I've tried countless sleep aids, but the Lavender Dreams Sleep Mist is truly exceptional. The gentle, natural fragrance helps me unwind and achieve deep, restorative sleep every night.</p>
+                                <p class="testimonial-author">— James Parker</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <p class="testimonial-text">Éléva products are the epitome of luxury self-care. The Mountain Pine Bath Elixir creates the most indulgent bathing experience—I feel like I'm at a high-end spa in the comfort of my own home.</p>
+                                <p class="testimonial-author">— Sophia Chen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="newsletter" class="newsletter">
+            <div class="container">
+                <h2 class="section-title">Join Our Community</h2>
+                <p class="fade-in">Subscribe to receive exclusive offers, early access to new releases, and wellness inspiration.</p>
+                <form class="newsletter-form fade-in">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Email address">
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Éléva</h3>
+                    <p>Luxury natural beauty and aromatherapy products crafted with intention for holistic well-being.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Facial Care</a></li>
+                        <li class="footer-link"><a href="#">Body Care</a></li>
+                        <li class="footer-link"><a href="#">Aromatherapy</a></li>
+                        <li class="footer-link"><a href="#">Gift Sets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Our Story</a></li>
+                        <li class="footer-link"><a href="#">Sustainability</a></li>
+                        <li class="footer-link"><a href="#">Ingredients</a></li>
+                        <li class="footer-link"><a href="#">Journal</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link">hello@eleva.com</li>
+                        <li class="footer-link">+1 (800) 555-1234</li>
+                        <li class="footer-link">123 Botanica Avenue, New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Éléva. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
