@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Éclat Naturals – Luxury Botanical Beauty</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --serif:'Playfair Display', serif;
+  --sans:'Open Sans', sans-serif;
+  --neutral-100:#ffffff;
+  --neutral-900:#1c1c1c;
+  --neutral-600:#6b6b6b;
+  --accent:#c8a15f;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:var(--sans);
+  color:var(--neutral-900);
+  background:var(--neutral-100);
+  line-height:1.6;
+  scroll-behavior:smooth;
+}
+img{max-width:100%;display:block;}
+
+header{
+  background:var(--neutral-100);
+  position:sticky;
+  top:0;
+  z-index:10;
+  box-shadow:0 2px 4px rgba(0,0,0,0.05);
+}
+nav{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem;
+}
+nav .logo{
+  font-family:var(--serif);
+  font-size:1.5rem;
+  letter-spacing:1px;
+}
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:1.2rem;
+}
+nav a{
+  text-decoration:none;
+  color:var(--neutral-900);
+  font-weight:600;
+}
+nav a:focus-visible,
+nav a:hover{color:var(--accent);}
+
+.hero{
+  background:url('https://images.unsplash.com/photo-1515036551567-bf991d3b2483?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  min-height:80vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:2rem;
+  color:var(--neutral-100);
+}
+.hero h1{
+  font-family:var(--serif);
+  font-size:2.5rem;
+  margin-bottom:1rem;
+  text-shadow:0 4px 6px rgba(0,0,0,0.3);
+}
+.hero p{margin-bottom:2rem;font-size:1.1rem;}
+.btn{
+  background:var(--accent);
+  color:var(--neutral-100);
+  border:none;
+  padding:.9rem 2rem;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:background .3s;
+}
+.btn:hover,
+.btn:focus-visible{background:var(--neutral-900);}
+
+.products{
+  max-width:1200px;
+  margin:auto;
+  padding:4rem 1rem;
+}
+.products h2{
+  font-family:var(--serif);
+  text-align:center;
+  margin-bottom:2rem;
+  font-size:2rem;
+}
+.product-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.5rem;
+}
+.product{
+  border:1px solid #ececec;
+  padding:1rem;
+  text-align:center;
+  transition:transform .3s;
+}
+.product:hover{transform:translateY(-5px);}
+.product img{border-radius:8px;margin-bottom:1rem;}
+.product h3{font-family:var(--serif);margin-bottom:.5rem;font-size:1.2rem;}
+.product .price{color:var(--neutral-600);margin-bottom:1rem;}
+.product .btn{width:100%;}
+/* Testimonials */
+.testimonials{
+  background:#f9f9f9;
+  padding:4rem 1rem;
+  position:relative;
+  overflow:hidden;
+}
+.testimonials h2{
+  font-family:var(--serif);
+  text-align:center;
+  margin-bottom:3rem;
+  font-size:2rem;
+}
+.carousel{
+  display:flex;
+  width:300%;
+  animation:slide 18s infinite;
+}
+.testimonial{
+  flex:0 0 100%;
+  padding:0 1rem;
+  max-width:600px;
+  margin:auto;
+  text-align:center;
+}
+.testimonial blockquote{
+  font-style:italic;
+  margin-bottom:1rem;
+}
+.testimonial cite{
+  font-weight:600;
+  color:var(--neutral-600);
+}
+@keyframes slide{
+  0%,20%{transform:translateX(0);}
+  25%,45%{transform:translateX(-100%);}
+  50%,70%{transform:translateX(-200%);}
+  75%,100%{transform:translateX(0);}
+}
+footer{
+  background:var(--neutral-900);
+  color:var(--neutral-100);
+  padding:2rem 1rem;
+  text-align:center;
+  font-size:.9rem;
+}
+
+/* Animations */
+.fade-in{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s ease-out,transform .6s ease-out;
+}
+.fade-in.visible{opacity:1;transform:none;}
+
+/* Responsive */
+@media(min-width:600px){
+  .hero h1{font-size:3rem;}
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(min-width:900px){
+  .hero h1{font-size:4rem;}
+  .product-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav aria-label="Primary">
+    <div class="logo">Éclat Naturals</div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#footer">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-label="Hero">
+    <div>
+      <h1>Pure Luxury from Nature</h1>
+      <p>Elevate your ritual with botanical beauty crafted for mindful indulgence.</p>
+      <button class="btn" aria-label="Shop Now">Shop Now</button>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Featured Collection</h2>
+    <div class="product-grid">
+      <article class="product fade-in" aria-label="Calming Rose Elixir">
+        <img src="https://images.unsplash.com/photo-1522337952165-702289deb211?auto=format&fit=crop&w=600&q=60" alt="Calming Rose Elixir bottle">
+        <h3>Calming Rose Elixir</h3>
+        <p class="price">$120</p>
+        <button class="btn" aria-label="Add Calming Rose Elixir to cart">Add to Cart</button>
+      </article>
+      <article class="product fade-in" aria-label="Renewal Jasmine Serum">
+        <img src="https://images.unsplash.com/photo-1601933470739-b88e53d6fb0e?auto=format&fit=crop&w=600&q=60" alt="Renewal Jasmine Serum bottle">
+        <h3>Renewal Jasmine Serum</h3>
+        <p class="price">$150</p>
+        <button class="btn" aria-label="Add Renewal Jasmine Serum to cart">Add to Cart</button>
+      </article>
+      <article class="product fade-in" aria-label="Soothing Lavender Mist">
+        <img src="https://images.unsplash.com/photo-1611056551979-765bbb948718?auto=format&fit=crop&w=600&q=60" alt="Soothing Lavender Mist bottle">
+        <h3>Soothing Lavender Mist</h3>
+        <p class="price">$95</p>
+        <button class="btn" aria-label="Add Soothing Lavender Mist to cart">Add to Cart</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials" aria-label="Testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="carousel" role="list">
+      <div class="testimonial" role="listitem">
+        <blockquote>“Éclat Naturals has transformed my skincare ritual. The jasmine serum is pure decadence.”</blockquote>
+        <cite>— Sophia L.</cite>
+      </div>
+      <div class="testimonial" role="listitem">
+        <blockquote>“I adore the rose elixir’s scent and feel — luxury and nature in perfect harmony.”</blockquote>
+        <cite>— Daniel K.</cite>
+      </div>
+      <div class="testimonial" role="listitem">
+        <blockquote>“Every product feels crafted with love and intention. My skin has never looked better.”</blockquote>
+        <cite>— Harper S.</cite>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer">
+  <p>&copy; 2024 Éclat Naturals. All rights reserved.</p>
+</footer>
+
+<script>
+/* Simple intersection observer for fade-in */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
