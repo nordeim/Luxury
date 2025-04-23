@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE | Luxury Natural Beauty & Aromatherapy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & CSS Variables */
+        :root {
+            /* Light mode colors */
+            --background-light: #f9f6f3;
+            --surface-light: #ffffff;
+            --text-primary-light: #1c1814;
+            --text-secondary-light: #5d5852;
+            --accent-light: #c9a980;
+            --accent-dark-light: #a68452;
+            --secondary-accent-light: #8a9f92;
+            --border-light: #e8e2dc;
+            --shadow-light: rgba(0, 0, 0, 0.08);
+            --overlay-light: rgba(28, 24, 20, 0.03);
+            
+            /* Dark mode colors */
+            --background-dark: #0f0e0c;
+            --surface-dark: #1a1814;
+            --text-primary-dark: #f5f2ef;
+            --text-secondary-dark: #a9a29b;
+            --accent-dark: #d5b68b;
+            --accent-dark-dark: #e6c99d;
+            --secondary-accent-dark: #89a29a;
+            --border-dark: #342f29;
+            --shadow-dark: rgba(0, 0, 0, 0.25);
+            --overlay-dark: rgba(255, 255, 255, 0.05);
+            
+            /* Dynamic variables (will be changed by JS) */
+            --background: var(--background-light);
+            --surface: var(--surface-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --accent: var(--accent-light);
+            --accent-dark: var(--accent-dark-light);
+            --secondary-accent: var(--secondary-accent-light);
+            --border: var(--border-light);
+            --shadow: var(--shadow-light);
+            --overlay: var(--overlay-light);
+            
+            /* Common variables */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 16px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --header-height: 80px;
+        }
+        
+        /* Dark mode class that will be toggled on the body */
+        body.dark-mode {
+            --background: var(--background-dark);
+            --surface: var(--surface-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --accent: var(--accent-dark);
+            --accent-dark: var(--accent-dark-dark);
+            --secondary-accent: var(--secondary-accent-dark);
+            --border: var(--border-dark);
+            --shadow: var(--shadow-dark);
+            --overlay: var(--overlay-dark);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+        
+        body {
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--background);
+            overflow-x: hidden;
+            transition: background-color var(--transition), color var(--transition);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 0.5em;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: var(--background);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: transform var(--transition), box-shadow var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(201, 169, 128, 0.3), 
+                        0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-dark);
+            opacity: 0;
+            transition: opacity var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(201, 169, 128, 0.4), 
+                        0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(201, 169, 128, 0.3), 
+                        0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+        
+        .btn--outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            box-shadow: 0 3px 10px rgba(201, 169, 128, 0.1), 
+                        0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .btn--outline:hover {
+            color: var(--background);
+            box-shadow: 0 6px 15px rgba(201, 169, 128, 0.2), 
+                        0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn--outline::before {
+            background: var(--accent);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title span {
+            display: block;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent);
+            margin: 1rem auto 0;
+        }
+        
+        .section-spacing {
+            padding: 6rem 0;
+        }
+        
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px 1px 1px 1px);
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+        
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background-color: var(--overlay);
+            border-radius: 40px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            box-shadow: inset 0 0 5px var(--shadow);
+        }
+        
+        .theme-toggle::before {
+            content: "☀️";
+            position: absolute;
+            left: 7px;
+            font-size: 14px;
+        }
+        
+        .theme-toggle::after {
+            content: "🌙";
+            position: absolute;
+            right: 7px;
+            font-size: 14px;
+        }
+        
+        .theme-toggle__indicator {
+            width: 22px;
+            height: 22px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            transform: translateX(0);
+            transition: var(--transition);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.dark-mode .theme-toggle__indicator {
+            transform: translateX(30px);
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: var(--header-height);
+            background-color: var(--background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition-fast);
+        }
+        
+        header.scrolled {
+            box-shadow: 0 5px 20px var(--shadow);
+            background-color: var(--background);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+            transition: var(--transition);
+        }
+        
+        .logo:hover {
+            color: var(--accent);
+        }
+        
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1100;
+        }
+        
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition);
+        }
+        
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -6px);
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--surface);
+            padding: 6rem 2rem 2rem;
+            box-shadow: -5px 0 30px var(--shadow);
+            transform: translateX(100%);
+            transition: transform var(--transition-slow);
+            z-index: 1050;
+            overflow-y: auto;
+        }
+        
+        nav.active {
+            transform: translateX(0);
+        }
+        
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        .nav-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition), transform var(--transition);
+        }
+        
+        nav.active .nav-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered animation for nav items */
+        nav.active .nav-item:nth-child(1) { transition-delay: 0.1s; }
+        nav.active .nav-item:nth-child(2) { transition-delay: 0.15s; }
+        nav.active .nav-item:nth-child(3) { transition-delay: 0.2s; }
+        nav.active .nav-item:nth-child(4) { transition-delay: 0.25s; }
+        nav.active .nav-item:nth-child(5) { transition-delay: 0.3s; }
+        nav.active .nav-item:nth-child(6) { transition-delay: 0.35s; }
+        
+        .nav-link {
+            font-size: 1.2rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            padding: 0.3rem 0;
+            position: relative;
+            color: var(--text-primary);
+        }
+        
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: a1px;
+            background-color: var(--accent);
+            transition: width var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--accent);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .header-action {
+            position: relative;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        
+        .header-action:hover {
+            color: var(--accent);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            color: var(--background);
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: var(--header-height);
+        }
+        
+        .hero-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                var(--background) 20%,
+                rgba(0, 0, 0, 0.7) 100%
+            );
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            animation: zoomVideo 30s infinite alternate ease-in-out;
+        }
+        
+        @keyframes zoomVideo {
+            0% { transform: scale(1.1); }
+            100% { transform: scale(1.3); }
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s ease forwards 0.5s;
+        }
+        
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .hero h1::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent);
+            margin-top: 1rem;
+        }
+        
+        .hero-tagline {
+            font-family: 'Jost', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Brand Story Section */
+        .brand-story {
+            position: relative;
+            padding: 8rem 0;
+            background-color: var(--surface);
+            transition: background-color var(--transition);
+        }
+        
+        .brand-story__content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .brand-story__text {
+            max-width: 600px;
+        }
+        
+        .brand-story__media {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 20px 40px var(--shadow);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        
+        .brand-story__media.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .brand-story__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .brand-story__media:hover .brand-story__image {
+            transform: scale(1.05);
+        }
+        
+        .brand-story__pattern {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background-color: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .brand-story__separator {
+            width: 80%;
+            max-width: 600px;
+            height: 1px;
+            background-color: var(--border);
+            margin: 5rem auto;
+            position: relative;
+        }
+        
+        .brand-story__separator::before {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: var(--accent);
+            background-color: var(--surface);
+            padding: 0 1.5rem;
+        }
+        
+        /* Collections Section */
+        .collections {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .collections-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: transparent;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .tab-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: var(--background);
+            border-color: var(--accent);
+        }
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+        
+        .collection-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transform: translateY(40px);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                        opacity 0.8s ease, 
+                        box-shadow var(--transition);
+        }
+        
+        .collection-card.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .collection-card:hover {
+            box-shadow: 0 15px 40px var(--shadow);
+            transform: translateY(-5px);
+        }
+        
+        /* Staggered animation for collection cards */
+        .collection-card:nth-child(1) { transition-delay: 0.1s; }
+        .collection-card:nth-child(2) { transition-delay: 0.2s; }
+        .collection-card:nth-child(3) { transition-delay: 0.3s; }
+        .collection-card:nth-child(4) { transition-delay: 0.4s; }
+        
+        .collection-card__image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-card:hover .collection-card__image {
+            transform: scale(1.05);
+        }
+        
+        .collection-card__content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.8),
+                transparent
+            );
+            color: white;
+        }
+        
+        .collection-card__title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .collection-card__link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .collection-card__link:hover {
+            color: white;
+        }
+        
+        .collection-card__link span {
+            margin-left: 0.5rem;
+            transition: transform var(--transition);
+        }
+        
+        .collection-card__link:hover span {
+            transform: translateX(5px);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 6rem 0;
+            background-color: var(--surface);
+            transition: background-color var(--transition);
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .products-header__title {
+            max-width: 600px;
+        }
+        
+        .view-all {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .view-all:hover {
+            color: var(--text-primary);
+        }
+        
+        .view-all span {
+            margin-left: 0.5rem;
+            transition: transform var(--transition);
+        }
+        
+        .view-all:hover span {
+            transform: translateX(5px);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background-color: var(--background);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform var(--transition), 
+                        box-shadow var(--transition),
+                        background-color var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+        
+        .product-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--accent);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: var(--radius-sm);
+            z-index: 1;
+        }
+        
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1;
+        }
+        
+        .product-action {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateX(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color var(--transition), color var(--transition);
+        }
+        
+        .product-card:hover .product-action {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .product-action:nth-child(1) { transition-delay: 0.1s; }
+        .product-action:nth-child(2) { transition-delay: 0.2s; }
+        
+        .product-action:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .quick-add {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: translateY(100%);
+            transition: transform var(--transition);
+        }
+        
+        .product-card:hover .quick-add {
+            transform: translateY(0);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .product-category {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            transition: color var(--transition);
+        }
+        
+        .product-card:hover .product-name {
+            color: var(--accent);
+        }
+        
+        .product-price {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .product-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-btn:hover {
+            color: white;
+        }
+        
+        .product-btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonials::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1530276371031-2511efff9d5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.07;
+            z-index: -1;
+        }
+        
+        .testimonials-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+        
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.8s ease;
+            animation: testimonialSlide 20s infinite;
+        }
+        
+        @keyframes testimonialSlide {
+            0%, 20% {
+                transform: translateX(0);
+            }
+            25%, 45% {
+                transform: translateX(-100%);
+            }
+            50%, 70% {
+                transform: translateX(-200%);
+            }
+            75%, 95% {
+                transform: translateX(-300%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 100%;
+        }
+        
+        .testimonial {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--surface);
+            padding: 3rem 2rem;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: background-color var(--transition);
+        }
+        
+        .testimonial-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .testimonial-rating {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: """;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text::before {
+            top: -1.5rem;
+            left: -1rem;
+        }
+        
+        .testimonial-text::after {
+            content: """;
+            bottom: -2.5rem;
+            right: -1rem;
+        }
+        
+        .testimonial-author {
+            margin-top: auto;
+        }
+        
+        .author-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--border);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .testimonial-dot.active {
+            background-color: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        /* Instagram Gallery */
+        .instagram {
+            padding: 6rem 0;
+            background-color: var(--surface);
+            transition: background-color var(--transition);
+        }
+        
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .instagram-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            aspect-ratio: 1;
+        }
+        
+        .instagram-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .instagram-item:hover .instagram-image {
+            transform: scale(1.1);
+        }
+        
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+        
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+        
+        .instagram-icon {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .newsletter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent);
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .newsletter-content {
+            margin-bottom: 3rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .newsletter-input {
+            padding: 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background-color: var(--background);
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition);
+        }
+        
+        .newsletter-input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201, 169, 128, 0.2);
+        }
+        
+        .newsletter-btn {
+            width: 100%;
+            padding: 1.2rem;
+        }
+        
+        /* Membership Section */
+        .membership {
+            padding: 6rem 0;
+            background-color: var(--surface);
+            transition: background-color var(--transition);
+        }
+        
+        .membership-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .membership-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .membership-card {
+            background-color: var(--background);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
+            position: relative;
+        }
+        
+        .membership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        
+        .membership-header {
+            position: relative;
+            padding: 2rem;
+            text-align: center;
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .membership-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .membership-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .membership-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        
+        .membership-content {
+            padding: 2rem;
+        }
+        
+        .membership-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .membership-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .membership-feature::before {
+            content: "✓";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+        
+        .membership-btn {
+            width: 100%;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-primary);
+            color: white;
+            padding: 5rem 0 1rem;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .footer-col h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-size: 1.3rem;
+        }
+        
+        .footer-col h3::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+            margin-top: 0.8rem;
+        }
+        
+        .about-text {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-link a {
+            opacity: 0.8;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .footer-link a:hover {
+            opacity: 1;
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 576px) {
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .brand-story__content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .newsletter-form {
+                flex-direction: row;
+            }
+            
+            .newsletter-btn {
+                width: auto;
+            }
+            
+            .membership-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .instagram-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .collections-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .membership-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-top {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .instagram-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        
+        /* Additional Animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">LUMIÈRE</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#collections" class="nav-link">Collections</a></li>
+                    <li class="nav-item"><a href="#products" class="nav-link">Products</a></li>
+                    <li class="nav-item"><a href="#story" class="nav-link">Our Story</a></li>
+                    <li class="nav-item"><a href="#membership" class="nav-link">Membership</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <div class="theme-toggle__indicator"></div>
+                </div>
+                <a href="#" class="header-action" aria-label="Search">
+                    <span>🔍</span>
+                </a>
+                <a href="#" class="header-action" aria-label="User account">
+                    <span>👤</span>
+                </a>
+                <a href="#" class="header-action" aria-label="Shopping cart">
+                    <span>🛒</span>
+                    <div class="cart-count">3</div>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-media">
+                <video class="hero-video" autoplay loop muted playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-applying-lotion-on-her-arm-4636-large.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-tagline">Exclusively Natural</div>
+                    <h1>Elevate Your Wellness Ritual</h1>
+                    <p>Discover our luxurious collection of natural beauty and aromatherapy essentials, meticulously crafted to transform your daily routine into a sensory journey of holistic self-care.</p>
+                    <div class="hero-btns">
+                        <a href="#collections" class="btn">Explore Collections</a>
+                        <a href="#membership" class="btn btn--outline">Join Membership</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="story" class="brand-story">
+            <div class="container">
+                <div class="brand-story__content">
+                    <div class="brand-story__text">
+                        <h2 class="section-title"><span>Our Heritage</span>The Essence of LUMIÈRE</h2>
+                        <p>Since 2010, LUMIÈRE has been at the forefront of luxury natural beauty, creating products that honor the delicate relationship between nature and wellbeing. Our founder, Claire Laurent, envisioned a brand that would capture the purest essences of botanical ingredients while delivering uncompromising efficacy.</p>
+                        <p>Each LUMIÈRE creation is a testament to our commitment to purity, potency, and purpose. We source ingredients from the most pristine environments around the world, working directly with ethical farmers and producers to ensure sustainability and exceptional quality.</p>
+                        <a href="#" class="view-all">Discover Our Story <span>→</span></a>
+                    </div>
+                    <div class="brand-story__media">
+                        <img src="https://images.unsplash.com/photo-1629204882800-73d0f08ec79c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Botanical ingredients in LUMIÈRE lab" class="brand-story__image">
+                        <div class="brand-story__pattern"></div>
+                    </div>
+                </div>
+                
+                <div class="brand-story__separator"></div>
+                
+                <div class="brand-story__content">
+                    <div class="brand-story__media">
+                        <img src="https://images.unsplash.com/photo-1621254334186-04cf7a917d2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sustainable harvesting of ingredients" class="brand-story__image">
+                        <div class="brand-story__pattern"></div>
+                    </div>
+                    <div class="brand-story__text">
+                        <h2 class="section-title"><span>Our Commitment</span>Ethical Luxury</h2>
+                        <p>At LUMIÈRE, we believe that true luxury respects both people and planet. Our commitment to ethical sourcing and sustainable practices permeates every aspect of our business—from our zero-waste manufacturing processes to our refillable packaging solutions.</p>
+                        <p>We are proud to be certified cruelty-free, vegan, and carbon-neutral. With every purchase, we donate a portion of proceeds to global reforestation initiatives, recognizing that our planet's botanical treasures must be preserved for generations to come.</p>
+                        <a href="#" class="view-all">Learn About Our Practices <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="collections" class="collections">
+            <div class="container">
+                <h2 class="section-title"><span>Discover</span>Our Signature Collections</h2>
+                
+                <div class="collections-tabs">
+                    <button class="tab-btn active">All Collections</button>
+                    <button class="tab-btn">Facial Care</button>
+                    <button class="tab-btn">Body Essentials</button>
+                    <button class="tab-btn">Aromatherapy</button>
+                </div>
+                
+                <div class="collections-grid">
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1570194065650-d99416341fe6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rose Radiance Collection" class="collection-card__image">
+                        <div class="collection-card__content">
+                            <h3 class="collection-card__title">Rose Radiance Collection</h3>
+                            <p>Harness the transformative power of rare damascena roses for luminous, rejuvenated skin.</p>
+                            <a href="#" class="collection-card__link">Explore Collection <span>→</span></a>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1602409339189-2d940dabb279?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alpine Serenity" class="collection-card__image">
+                        <div class="collection-card__content">
+                            <h3 class="collection-card__title">Alpine Serenity</h3>
+                            <p>Experience the calming essences of mountain botanicals for profound relaxation and renewal.</p>
+                            <a href="#" class="collection-card__link">Explore Collection <span>→</span></a>
+                        </div>
+                    </div>
+                    
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Citrus Vitality" class="collection-card__image">
+                        <div class="collection-card__content">
+                            <h3 class="collection-card__title">Citrus Vitality</h3>
+                            <p>Invigorate your senses with the energizing power of cold-pressed citrus oils and revitalizing herbs.</p>
+                            <a href="#" class="collection-card__link">Explore Collection <span>→</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="products" class="products">
+            <div class="container">
+                <div class="products-header">
+                    <div class="products-header__title">
+                        <h2 class="section-title"><span>Curated Selection</span>Bestselling Products</h2>
+                    </div>
+                    <a href="#" class="view-all">View All Products <span>→</span></a>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rejuvenating Rose Facial Elixir" loading="lazy">
+                            <div class="product-badge">Bestseller</div>
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Facial Care</div>
+                            <h3 class="product-name">Rejuvenating Rose Facial Elixir</h3>
+                            <div class="product-price">$128</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Alpine Calm Bath Essence" loading="lazy">
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Body Care</div>
+                            <h3 class="product-name">Alpine Calm Bath Essence</h3>
+                            <div class="product-price">$85</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1560707854-8ac1e7d7d770?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Citrus Awakening Diffuser Blend" loading="lazy">
+                            <div class="product-badge">New</div>
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Aromatherapy</div>
+                            <h3 class="product-name">Citrus Awakening Diffuser Blend</h3>
+                            <div class="product-price">$65</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1601055903647-ddf1ee9701b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Overnight Renewal Facial Oil" loading="lazy">
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Facial Care</div>
+                            <h3 class="product-name">Overnight Renewal Facial Oil</h3>
+                            <div class="product-price">$110</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1598662975215-2a6536be46a4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Jasmine & Neroli Body Crème" loading="lazy">
+                            <div class="product-badge">Limited</div>
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Body Care</div>
+                            <h3 class="product-name">Jasmine & Neroli Body Crème</h3>
+                            <div class="product-price">$96</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sleep Ritual Pillow Mist" loading="lazy">
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Add to wishlist">❤</button>
+                                <button class="product-action" aria-label="Quick view">👁</button>
+                            </div>
+                            <div class="quick-add">Quick Add to Cart</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">Aromatherapy</div>
+                            <h3 class="product-name">Sleep Ritual Pillow Mist</h3>
+                            <div class="product-price">$58</div>
+                            <button class="product-btn">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="testimonials">
+            <div class="container testimonials-container">
+                <h2 class="section-title"><span>Client Experiences</span>Transformative Results</h2>
+                
+                <div class="testimonial-slider">
+                    <div class="testimonial-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">The Rejuvenating Rose Facial Elixir has completely transformed my skincare routine. After years of trying premium products, I've finally found something that delivers visible results. My complexion is noticeably more radiant, and the fragrance is an ethereal experience in itself.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emma Laurent">
+                                        </div>
+                                        <h4 class="author-name">Emma Laurent</h4>
+                                        <p class="author-title">Beauty Editor</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">The Alpine Calm Bath Essence has become my non-negotiable weekly ritual. The blend of mountain herbs creates the most indulgent bathing experience—I feel like I'm at a high-end spa in the Swiss Alps. The stress relief is immediate and profound, and my skin feels nourished for days.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James Mercado">
+                                        </div>
+                                        <h4 class="author-name">James Mercado</h4>
+                                        <p class="author-title">Executive Chef</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">As someone who travels constantly for work, LUMIÈRE products have become my sanctuary in a suitcase. The Sleep Ritual Pillow Mist creates instant familiarity in any hotel room, and the Overnight Renewal Oil ensures I never look jet-lagged, even when I am. True luxury is feeling at home anywhere—that's what these products give me.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophia Chen">
+                                        </div>
+                                        <h4 class="author-name">Sophia Chen</h4>
+                                        <p class="author-title">International Consultant</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial">
+                                <div class="testimonial-content">
+                                    <div class="testimonial-rating">★★★★★</div>
+                                    <p class="testimonial-text">I've been a LUMIÈRE member for three years, and each seasonal box continues to exceed my expectations. The curation is impeccable, always introducing me to new formulations before they're available to the public. The virtual consultations have helped me develop a regimen perfectly tailored to my skin's changing needs throughout the year.</p>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Michael Torres">
+                                        </div>
+                                        <h4 class="author-name">Michael Torres</h4>
+                                        <p class="author-title">Architect</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-dots">
+                    <div class="testimonial-dot active"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="instagram">
+            <div class="container">
+                <h2 class="section-title"><span>@LUMIÈRE</span>Join Our Community</h2>
+                
+                <div class="instagram-grid">
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1586511925558-a4c6376fe65f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1571646034647-52e6ea84b28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1583441699957-5f7ae95531ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1602704876894-b5a76cc79db0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                    <div class="instagram-item">
+                        <img src="https://images.unsplash.com/photo-1607602674354-31f8b281ad3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <div class="instagram-icon">📷</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="newsletter">
+            <div class="container newsletter-container">
+                <div class="newsletter-content">
+                    <h2 class="section-title"><span>Stay Connected</span>Join Our Inner Circle</h2>
+                    <p>Subscribe to receive exclusive offers, early access to limited collections, and expert wellness insights crafted by our botanical specialists.</p>
+                </div>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" aria-label="Email address">
+                    <button type="submit" class="btn newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </section>
+        
+        <section id="membership" class="membership">
+            <div class="container membership-container">
+                <h2 class="section-title"><span>Exclusive Benefits</span>LUMIÈRE Membership</h2>
+                
+                <div class="membership-cards">
+                    <div class="membership-card">
+                        <div class="membership-header">
+                            <h3 class="membership-title">Essence</h3>
+                            <div class="membership-price">$150<span>/quarter</span></div>
+                        </div>
+                        <div class="membership-content">
+                            <ul class="membership-features">
+                                <li class="membership-feature">Quarterly curated box (value $200+)</li>
+                                <li class="membership-feature">15% off all regular purchases</li>
+                                <li class="membership-feature">Early access to new releases</li>
+                                <li class="membership-feature">Seasonal digital wellness guide</li>
+                                <li class="membership-feature">Complimentary shipping</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="membership-card">
+                        <div class="membership-header">
+                            <h3 class="membership-title">Radiance</h3>
+                            <div class="membership-price">$250<span>/quarter</span></div>
+                        </div>
+                        <div class="membership-content">
+                            <ul class="membership-features">
+                                <li class="membership-feature">Luxury quarterly box (value $350+)</li>
+                                <li class="membership-feature">20% off all regular purchases</li>
+                                <li class="membership-feature">Virtual seasonal skin consultation</li>
+                                <li class="membership-feature">Access to limited edition collections</li>
+                                <li class="membership-feature">Personalized product recommendations</li>
+                                <li class="membership-feature">Complimentary global shipping</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="membership-card">
+                        <div class="membership-header">
+                            <h3 class="membership-title">Luminary</h3>
+                            <div class="membership-price">$450<span>/quarter</span></div>
+                        </div>
+                        <div class="membership-content">
+                            <ul class="membership-features">
+                                <li class="membership-feature">Bespoke quarterly collection (value $600+)</li>
+                                <li class="membership-feature">25% off all purchases</li>
+                                <li class="membership-feature">Quarterly private consultation with our founder</li>
+                                <li class="membership-feature">Custom-blended seasonal product</li>
+                                <li class="membership-feature">Exclusive in-person events</li>
+                                <li class="membership-feature">Complimentary priority shipping</li>
+                                <li class="membership-feature">Annual luxury retreat discount</li>
+                            </ul>
+                            <button class="btn membership-btn">Join Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-col">
+                    <h3>LUMIÈRE</h3>
+                    <p class="about-text">Luxury natural beauty and aromatherapy products crafted with intention for holistic wellbeing. Our botanical formulations honor the wisdom of nature and the science of transformation.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">📱</a>
+                        <a href="#" class="social-link" aria-label="Facebook">📱</a>
+                        <a href="#" class="social-link" aria-label="Pinterest">📱</a>
+                        <a href="#" class="social-link" aria-label="YouTube">📱</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Collections</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Facial Care</a></li>
+                        <li class="footer-link"><a href="#">Body Essentials</a></li>
+                        <li class="footer-link"><a href="#">Aromatherapy</a></li>
+                        <li class="footer-link"><a href="#">Gift Collections</a></li>
+                        <li class="footer-link"><a href="#">Limited Editions</a></li>
+                        <li class="footer-link"><a href="#">Travel Sets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Our Story</a></li>
+                        <li class="footer-link"><a href="#">Sustainability</a></li>
+                        <li class="footer-link"><a href="#">Ingredients</a></li>
+                        <li class="footer-link"><a href="#">Membership</a></li>
+                        <li class="footer-link"><a href="#">Journal</a></li>
+                        <li class="footer-link"><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="contact-link">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-info">concierge@lumiere.com</div>
+                    </div>
+                    <div class="contact-link">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-info">+1 (800) 555-8723</div>
+                    </div>
+                    <div class="contact-link">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-info">175 Botanica Avenue, New York, NY 10010</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 LUMIÈRE. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
