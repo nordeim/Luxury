@@ -1,0 +1,3372 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LUMIÈRE | Luxury natural beauty and aromatherapy essences crafted with the finest botanical ingredients.">
+    <title>LUMIÈRE | Luxury Natural Beauty & Aromatherapy</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-heading-accent: 'Cinzel', serif;
+            --font-body: 'Jost', sans-serif;
+            --font-serif: 'Cormorant Garamond', serif;
+            
+            /* Colors - Day Mode */
+            --color-background: #fcfaf7;
+            --color-surface: #ffffff;
+            --color-surface-alt: #f5f1ea;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-accent: #d4af37; /* Champagne gold */
+            --color-accent-light: #e9d98f;
+            --color-accent-dark: #a58829;
+            --color-accent-gradient: linear-gradient(135deg, #d4af37, #f8e9a1, #a58829);
+            --color-border: rgba(165, 136, 41, 0.15);
+            --color-shadow: rgba(26, 26, 26, 0.08);
+            --color-overlay: rgba(26, 26, 26, 0.3);
+            --color-overlay-gradient: linear-gradient(to bottom, rgba(26, 26, 26, 0), rgba(26, 26, 26, 0.7));
+            
+            /* Glass effect */
+            --glass-background: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-blur: 10px;
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --spacing-xxl: 8rem;
+            
+            /* Container widths */
+            --container-sm: 640px;
+            --container-md: 1024px;
+            --container-lg: 1280px;
+            --container-xl: 1440px;
+            
+            /* Border radius */
+            --radius-sm: 2px;
+            --radius-md: 4px;
+            --radius-lg: 8px;
+            --radius-xl: 16px;
+            --radius-pill: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-medium: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            
+            /* Animations */
+            --animation-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-inner: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            --shadow-accent: 0 5px 15px rgba(212, 175, 55, 0.2);
+            
+            /* Z-index layers */
+            --z-header: 100;
+            --z-drawer: 200;
+            --z-cursor: 250;
+            --z-modal: 300;
+            --z-toast: 400;
+        }
+        
+        /* Dark Theme Colors */
+        html[data-theme="night"] {
+            --color-background: #0f0f13;
+            --color-surface: #1c1c24;
+            --color-surface-alt: #26262e;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #b0b0b0;
+            --color-accent: #50d890; /* Emerald green */
+            --color-accent-light: #7ae5ac;
+            --color-accent-dark: #3bab71;
+            --color-accent-gradient: linear-gradient(135deg, #3bab71, #50d890, #7ae5ac);
+            --color-border: rgba(80, 216, 144, 0.15);
+            --color-shadow: rgba(0, 0, 0, 0.2);
+            --color-overlay: rgba(0, 0, 0, 0.5);
+            --color-overlay-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+            
+            /* Glass effect */
+            --glass-background: rgba(28, 28, 36, 0.7);
+            --glass-border: rgba(80, 216, 144, 0.1);
+            --glass-blur: 10px;
+            
+            /* Shadow adjustments */
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.25);
+            --shadow-accent: 0 5px 15px rgba(80, 216, 144, 0.2);
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background-color: var(--color-surface-alt);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--color-accent);
+            border-radius: var(--radius-pill);
+        }
+        
+        /* Selection */
+        ::selection {
+            background-color: var(--color-accent);
+            color: white;
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent) var(--color-surface-alt);
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color var(--transition-medium), color var(--transition-medium);
+        }
+        
+        body.no-scroll {
+            overflow: hidden;
+        }
+        
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+        
+        button, input, textarea, select {
+            font: inherit;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            letter-spacing: -0.01em;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+            font-weight: 300;
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--color-accent);
+        }
+        
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .container-xl {
+            max-width: var(--container-xl);
+        }
+        
+        /* Section */
+        .section {
+            padding: var(--spacing-xl) 0;
+            position: relative;
+        }
+        
+        .section-lg {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        /* Typography Utilities */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-accent {
+            color: var(--color-accent);
+        }
+        
+        .subtitle {
+            font-family: var(--font-heading-accent);
+            font-size: 0.875rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-xs);
+            display: inline-block;
+        }
+        
+        .drop-cap::first-letter {
+            font-family: var(--font-serif);
+            float: left;
+            font-size: 3.5em;
+            line-height: 0.8;
+            margin-right: 0.1em;
+            color: var(--color-accent);
+        }
+        
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--color-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: var(--z-cursor);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, transform 0.05s;
+            opacity: 0;
+            mix-blend-mode: difference;
+        }
+        
+        .custom-cursor-inner {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: var(--z-cursor);
+            transition: width 0.3s, height 0.3s, background-color 0.3s, transform 0.05s;
+            opacity: 0;
+        }
+        
+        .cursor-active {
+            opacity: 1;
+        }
+        
+        .cursor-hover {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: transparent;
+        }
+        
+        .cursor-click {
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+        
+        html[data-theme="night"] .custom-cursor {
+            border-color: var(--color-accent);
+        }
+        
+        html[data-theme="night"] .custom-cursor-inner {
+            background-color: var(--color-accent);
+        }
+        
+        html[data-theme="night"] .cursor-hover {
+            background-color: rgba(80, 216, 144, 0.1);
+        }
+        
+        /* Particle background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+        
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-header);
+            padding: var(--spacing-sm) 0;
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            background-color: transparent;
+            transition: background-color var(--transition-medium), padding var(--transition-medium), box-shadow var(--transition-medium);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .header.scrolled {
+            padding: calc(var(--spacing-xs) / 2) 0;
+            background-color: var(--glass-background);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 95%;
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-heading-accent);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s var(--animation-bounce);
+        }
+        
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding-bottom: 2px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--animation-bounce);
+        }
+        
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            color: var(--color-text-primary);
+            transition: color var(--transition-fast), transform var(--transition-fast);
+            cursor: pointer;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .nav-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 0.3s var(--animation-bounce), opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .nav-icon:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1rem;
+            height: 1rem;
+            font-size: 0.625rem;
+            font-weight: 600;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            width: 28px;
+            height: 22px;
+            position: relative;
+            z-index: 201;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-text-primary);
+            transition: transform var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast);
+        }
+        
+        .menu-toggle.active span:first-child {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:last-child {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            max-width: 450px;
+            background-color: var(--color-surface);
+            padding: var(--spacing-xl) var(--spacing-md);
+            transform: translateX(100%);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            z-index: var(--z-drawer);
+            box-shadow: var(--shadow-lg);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+            margin-top: var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        
+        .mobile-nav-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition-delay: calc(var(--delay, 0) * 0.1s);
+        }
+        
+        .mobile-nav.active .mobile-nav-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-family: var(--font-heading);
+            padding: var(--spacing-xs) 0;
+            position: relative;
+            width: fit-content;
+        }
+        
+        .mobile-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s var(--animation-bounce);
+        }
+        
+        .mobile-nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .mobile-nav-footer {
+            margin-top: auto;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .mobile-social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: 1px solid var(--color-accent);
+            border-radius: var(--radius-sm);
+            color: var(--color-accent);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-accent);
+            transform: translateX(-100%);
+            transition: transform var(--transition-medium);
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: white;
+        }
+        
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: #ffffff;
+        }
+        
+        .btn-primary::before {
+            background-color: var(--color-accent-dark);
+        }
+        
+        .btn-primary:hover {
+            border-color: var(--color-accent-dark);
+        }
+        
+        .btn-lg {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1.25rem;
+            font-size: 0.75rem;
+        }
+        
+        .btn-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-primary);
+            transition: color var(--transition-fast), transform var(--transition-fast);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 0.3s var(--animation-bounce), opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-icon:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .btn-icon:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            color: var(--color-text-primary);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            transition: color var(--transition-fast);
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+            opacity: 0;
+            transform: scale(0);
+            transition: transform 0.3s var(--animation-bounce), opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .theme-toggle:hover {
+            color: white;
+        }
+        
+        .theme-toggle:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transform: scale(1.05);
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05); /* Slight zoom effect */
+            animation: subtle-zoom 30s infinite alternate ease-in-out;
+            filter: brightness(0.8);
+        }
+        
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-overlay-gradient);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            max-width: 650px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fade-in-up 1s forwards 0.5s;
+        }
+        
+        .hero-title {
+            margin-bottom: var(--spacing-md);
+            line-height: 1.1;
+            position: relative;
+        }
+        
+        .hero-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--color-accent-gradient);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .hero-title span {
+            display: block;
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+            font-weight: 300;
+            font-style: italic;
+            max-width: 90%;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            opacity: 0;
+            animation: fade-in 1s forwards 1.5s;
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+        
+        .hero-scroll:hover {
+            transform: translateX(-50%) translateY(5px);
+        }
+        
+        .hero-scroll-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .hero-scroll-icon {
+            animation: bounce 2s infinite;
+        }
+        
+        /* Featured collection */
+        .featured-collection {
+            position: relative;
+            padding-top: var(--spacing-xxl);
+        }
+        
+        .collection-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+        
+        .collection-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--color-accent);
+            margin: var(--spacing-sm) auto 0;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .featured-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            transition: transform var(--transition-medium);
+            will-change: transform;
+            cursor: pointer;
+        }
+        
+        .featured-item:hover {
+            transform: translateY(-8px);
+        }
+        
+        .featured-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-overlay-gradient);
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+            z-index: 1;
+        }
+        
+        .featured-item:hover::before {
+            opacity: 1;
+        }
+        
+        .featured-item-1 {
+            grid-column: 1 / span 4;
+            grid-row: 1 / span 2;
+        }
+        
+        .featured-item-2 {
+            grid-column: 5 / span 4;
+            grid-row: 1 / span 1;
+        }
+        
+        .featured-item-3 {
+            grid-column: 5 / span 4;
+            grid-row: 2 / span 1;
+        }
+        
+        .featured-item-4 {
+            grid-column: 9 / span 4;
+            grid-row: 1 / span 2;
+        }
+        
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .featured-item:hover .featured-image {
+            transform: scale(1.1);
+        }
+        
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-md);
+            color: white;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform var(--transition-medium), opacity var(--transition-medium);
+        }
+        
+        .featured-item:hover .featured-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .featured-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .featured-subtitle {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .featured-link {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .featured-cta {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* Collections tabs section */
+        .collections {
+            position: relative;
+            background-color: var(--color-surface-alt);
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--color-accent);
+            margin: var(--spacing-sm) auto 0;
+        }
+        
+        .collection-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+            position: relative;
+        }
+        
+        .tab-underline {
+            position: absolute;
+            bottom: -2px;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .collection-tab {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: none;
+            background: none;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+        
+        .collection-tab:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .collection-tab.active {
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fade-in 0.6s ease forwards;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+        
+        .product-card {
+            position: relative;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            will-change: transform, box-shadow;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg), var(--shadow-accent);
+        }
+        
+        .product-image-wrapper {
+            position: relative;
+            padding-top: 125%;
+            overflow: hidden;
+            background-color: var(--color-surface-alt);
+        }
+        
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+            will-change: transform;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            left: var(--spacing-sm);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-radius: var(--radius-pill);
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .product-actions {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .product-action {
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            color: var(--color-text-primary);
+            transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+            will-change: transform;
+        }
+        
+        .product-action:hover {
+            background-color: var(--color-accent);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .product-category {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-description {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+        
+        .product-price {
+            font-family: var(--font-body);
+            font-weight: 500;
+            color: var(--color-accent);
+            font-size: 1.125rem;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .rating-stars {
+            display: flex;
+            color: var(--color-accent);
+        }
+        
+        .rating-count {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .product-cta {
+            margin-top: var(--spacing-sm);
+        }
+        
+        .view-all {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+        }
+        
+        /* Brand story section */
+        .brand-story {
+            position: relative;
+            overflow: hidden;
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        .brand-story-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.02;
+            pointer-events: none;
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px);
+        }
+        
+        .brand-story-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-xl);
+        }
+        
+        .brand-story-media {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+        
+        .brand-story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .brand-story-media:hover .brand-story-image {
+            transform: scale(1.05);
+        }
+        
+        .story-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        
+        .story-header {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .story-title {
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+        }
+        
+        .story-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--color-accent);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .story-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        
+        .story-feature {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+        
+        .feature-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color: var(--color-surface-alt);
+            color: var(--color-accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-medium), background-color var(--transition-medium), color var(--transition-medium);
+        }
+        
+        .story-feature:hover .feature-icon {
+            transform: scale(1.1);
+            background-color: var(--color-accent);
+            color: white;
+        }
+        
+        .feature-content {
+            flex-grow: 1;
+        }
+        
+        .feature-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Testimonials section */
+        .testimonials {
+            position: relative;
+            background-color: var(--color-surface);
+            padding: var(--spacing-xxl) 0;
+            overflow: hidden;
+        }
+        
+        .testimonials-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+        
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid var(--color-accent);
+            opacity: 0.2;
+        }
+        
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+        
+        .circle-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -250px;
+            right: -250px;
+        }
+        
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            right: 10%;
+        }
+        
+        .testimonials-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: var(--spacing-lg);
+        }
+        
+        .testimonials-track {
+            display: flex;
+            transition: transform var(--transition-slow) ease;
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 var(--spacing-md);
+        }
+        
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+            background-color: var(--color-surface-alt);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: var(--font-serif);
+            font-size: 12rem;
+            color: var(--color-accent);
+            opacity: 0.1;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-primary);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: var(--spacing-sm);
+            border: 3px solid var(--color-accent);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1.125rem;
+        }
+        
+        .testimonial-info {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .testimonial-arrow {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--color-text-primary);
+            transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .testimonial-arrow:hover {
+            background-color: var(--color-accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: var(--spacing-md);
+        }
+        
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-border);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .testimonial-dot.active {
+            background-color: var(--color-accent);
+            transform: scale(1.3);
+        }
+        
+        /* Newsletter section */
+        .newsletter {
+            position: relative;
+            background: var(--color-accent-gradient);
+            color: #ffffff;
+            padding: var(--spacing-xl) 0;
+            overflow: hidden;
+        }
+        
+        .newsletter-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .newsletter-content {
+            text-align: center;
+        }
+        
+        .newsletter-title {
+            color: #ffffff;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+        
+        .newsletter-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-md);
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.125rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .newsletter-input {
+            padding: 1rem 1.25rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+            font-size: 1rem;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-input:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+        
+        .newsletter-submit {
+            background-color: #ffffff;
+            color: var(--color-accent);
+            border: none;
+            padding: 1rem 1.25rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .newsletter-submit:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-submit:active {
+            transform: translateY(-1px);
+        }
+        
+        .newsletter-circles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .newsletter-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .newsletter-circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -50px;
+        }
+        
+        .newsletter-circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: 10%;
+        }
+        
+        /* Instagram section */
+        .instagram {
+            position: relative;
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .instagram-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .instagram-title {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .instagram-subtitle {
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--color-text-secondary);
+        }
+        
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .instagram-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+        
+        .instagram-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+        
+        .instagram-item:hover .instagram-image {
+            transform: scale(1.1);
+        }
+        
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-overlay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+        
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+        
+        .instagram-icon {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .instagram-cta {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+        }
+        
+        /* Footer */
+        .footer {
+            position: relative;
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            background-color: var(--color-surface-alt);
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .footer-logo {
+            display: inline-block;
+            font-family: var(--font-heading-accent);
+            font-size: 1.75rem;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-motto {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.125rem;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            max-width: 400px;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--color-surface);
+            border-radius: 50%;
+            color: var(--color-text-primary);
+            transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background-color: var(--color-accent);
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+        
+        .footer-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--color-accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link a {
+            display: inline-block;
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast), transform var(--transition-fast);
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .footer-link a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s var(--animation-bounce);
+        }
+        
+        .footer-link a:hover {
+            color: var(--color-accent);
+            transform: translateX(3px);
+        }
+        
+        .footer-link a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        
+        .contact-icon {
+            color: var(--color-accent);
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+        }
+        
+        .contact-text {
+            font-size: 0.9375rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+        }
+        
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+        
+        .footer-legal-link {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-legal-link:hover {
+            color: var(--color-accent);
+        }
+        
+        .footer-payment {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .payment-icon {
+            width: 40px;
+            height: 24px;
+            opacity: 0.5;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .payment-icon:hover {
+            opacity: 1;
+        }
+        
+        /* Quick view modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: var(--z-modal);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-medium), visibility var(--transition-medium);
+            padding: var(--spacing-md);
+        }
+        
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--color-surface);
+            border-radius: var(--radius-lg);
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .modal.active .modal-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+            z-index: 1;
+        }
+        
+        .modal-close:hover {
+            background-color: white;
+            color: var(--color-text-primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        
+        /* Animations */
+        @keyframes subtle-zoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        /* Fade-in elements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Staggered animations */
+        .stagger-fade-in > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(1) {
+            transition-delay: 0.1s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(2) {
+            transition-delay: 0.2s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(3) {
+            transition-delay: 0.3s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(4) {
+            transition-delay: 0.4s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(5) {
+            transition-delay: 0.5s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stagger-fade-in.visible > *:nth-child(6) {
+            transition-delay: 0.6s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive styles */
+        @media (min-width: 640px) {
+            .mobile-nav {
+                width: 400px;
+            }
+            
+            .hero-title span {
+                display: inline;
+            }
+            
+            .newsletter-form {
+                flex-direction: row;
+            }
+            
+            .newsletter-input {
+                flex-grow: 1;
+            }
+            
+            .newsletter-submit {
+                flex-shrink: 0;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .brand-story-inner {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: var(--spacing-xxl);
+            }
+            
+            .footer-top {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+            
+            .newsletter-inner {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+            
+            .newsletter-content {
+                text-align: left;
+            }
+            
+            .story-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .instagram-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .nav-menu {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            .story-features {
+                margin-top: var(--spacing-lg);
+            }
+            
+            .testimonial-card {
+                padding: var(--spacing-xl);
+            }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .hero-image {
+                animation: none !important;
+            }
+            
+            .hero-scroll-icon {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-inner"></div>
+    
+    <!-- Particle background -->
+    <div class="particles-container" id="particles-js"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">LUMIÈRE</a>
+            
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Shop</a></li>
+                    <li><a href="#" class="nav-link">Collections</a></li>
+                    <li><a href="#" class="nav-link">Our Story</a></li>
+                    <li><a href="#" class="nav-link">Journal</a></li>
+                    <li><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle">☾</button>
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="nav-icon cart-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="cart-count">3</span>
+                    </div>
+                    <div class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <a href="#" class="logo">LUMIÈRE</a>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item" style="--delay: 1"><a href="#" class="mobile-nav-link">Shop</a></li>
+            <li class="mobile-nav-item" style="--delay: 2"><a href="#" class="mobile-nav-link">Collections</a></li>
+            <li class="mobile-nav-item" style="--delay: 3"><a href="#" class="mobile-nav-link">Our Story</a></li>
+            <li class="mobile-nav-item" style="--delay: 4"><a href="#" class="mobile-nav-link">Journal</a></li>
+            <li class="mobile-nav-item" style="--delay: 5"><a href="#" class="mobile-nav-link">Contact</a></li>
+            <li class="mobile-nav-item" style="--delay: 6"><a href="#" class="mobile-nav-link">Account</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <p>Follow us on social media for exclusive content and offers.</p>
+            <div class="mobile-social-links">
+                <a href="#" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <a href="#" class="social-link">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-media">
+            <video autoplay muted loop class="hero-video">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-aromatherapy-oils-and-candles-in-a-massage-studio-13193-large.mp4" type="video/mp4">
+                <!-- Fallback image -->
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Luxury aromatherapy products" class="hero-image">
+            </video>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="subtitle">NATURE'S FINEST ESSENCE</div>
+                <h1 class="hero-title">Elevate Your Senses <span>with Botanical Luxury</span></h1>
+                <p class="hero-subtitle">Exquisite aromatherapy and skin rituals crafted from the world's most precious natural ingredients, designed to transform your daily routine into moments of sublime indulgence.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary btn-lg">Explore Collections</a>
+                    <a href="#" class="btn btn-lg">Discover Our Story</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll" id="scroll-down">
+            <div class="hero-scroll-text">Scroll to discover</div>
+            <div class="hero-scroll-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Collection Section -->
+    <section class="section featured-collection">
+        <div class="container-xl">
+            <div class="collection-header fade-in">
+                <div class="subtitle">CURATED SELECTION</div>
+                <h2>Experience Our Signature Collections</h2>
+                <p>Discover our most coveted formulations, each crafted to deliver exceptional sensory experiences</p>
+            </div>
+            
+            <div class="featured-grid">
+                <div class="featured-item featured-item-1 fade-in">
+                    <img src="https://images.unsplash.com/photo-1608571423902-ead08829a459?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Aromatherapy Collection" class="featured-image">
+                    <div class="featured-content">
+                        <div class="featured-subtitle">SIGNATURE COLLECTION</div>
+                        <h3 class="featured-title">Essential Oil Blends</h3>
+                        <a href="#" class="featured-link">Explore Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                
+                <div class="featured-item featured-item-2 fade-in" style="animation-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1570194065650-d99c3cd5bb6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Facial Care Collection" class="featured-image">
+                    <div class="featured-content">
+                        <div class="featured-subtitle">BOTANICAL BEAUTY</div>
+                        <h3 class="featured-title">Facial Rituals</h3>
+                        <a href="#" class="featured-link">Explore Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                
+                <div class="featured-item featured-item-3 fade-in" style="animation-delay: 0.3s;">
+                    <img src="https://images.unsplash.com/photo-1616694848883-7d4c0c45333f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Bath & Body Collection" class="featured-image">
+                    <div class="featured-content">
+                        <div class="featured-subtitle">SPA EXPERIENCE</div>
+                        <h3 class="featured-title">Bath & Body</h3>
+                        <a href="#" class="featured-link">Explore Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+                
+                <div class="featured-item featured-item-4 fade-in" style="animation-delay: 0.4s;">
+                    <img src="https://images.unsplash.com/photo-1602928089553-5937762e2f86?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Gift Collection" class="featured-image">
+                    <div class="featured-content">
+                        <div class="featured-subtitle">CURATED GIFTING</div>
+                        <h3 class="featured-title">Luxury Gift Sets</h3>
+                        <a href="#" class="featured-link">Explore Collection <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="featured-cta fade-in">
+                <a href="#" class="btn btn-primary">View All Collections</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Collections Section -->
+    <section class="section collections">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="subtitle">BESTSELLERS</div>
+                <h2>Most Coveted Formulations</h2>
+                <p>Discover our most beloved creations that have earned a devoted following worldwide</p>
+            </div>
+            
+            <div class="collection-tabs fade-in">
+                <button class="collection-tab active">All</button>
+                <button class="collection-tab">Essential Oils</button>
+                <button class="collection-tab">Facial Care</button>
+                <button class="collection-tab">Bath & Body</button>
+                <button class="collection-tab">Home Ambiance</button>
+                <div class="tab-underline" style="width: 32px; transform: translateX(48px);"></div>
+            </div>
+            
+            <div class="tab-content active">
+                <div class="products-grid stagger-fade-in">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Rose & Chamomile Face Oil" class="product-image">
+                            <div class="product-badge">Bestseller</div>
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Quick view">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </button>
+                                <button class="product-action" aria-label="Add to wishlist">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Facial Care</div>
+                            <h3 class="product-title">Rose & Chamomile Facial Elixir</h3>
+                            <p class="product-description">A deeply nourishing facial oil blend that restores radiance while calming sensitive skin.</p>
+                            <div class="product-meta">
+                                <div class="product-price">$78.00</div>
+                                <div class="product-rating">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <div class="rating-count">(124)</div>
+                                </div>
+                            </div>
+                            <div class="product-cta">
+                                <button class="btn btn-outline btn-block">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Lavender Bath Salts" class="product-image">
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Quick view">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </button>
+                                <button class="product-action" aria-label="Add to wishlist">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Bath & Body</div>
+                            <h3 class="product-title">Lavender & Sea Mineral Bath Soak</h3>
+                            <p class="product-description">A calming blend of French lavender and mineral-rich sea salts to soothe body and mind.</p>
+                            <div class="product-meta">
+                                <div class="product-price">$42.00</div>
+                                <div class="product-rating">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <div class="rating-count">(96)</div>
+                                </div>
+                            </div>
+                            <div class="product-cta">
+                                <button class="btn btn-outline btn-block">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1611762348135-5b09e789e801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Essential Oil Blend" class="product-image">
+                            <div class="product-badge">New</div>
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Quick view">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </button>
+                                <button class="product-action" aria-label="Add to wishlist">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Essential Oils</div>
+                            <h3 class="product-title">Serenity Essential Oil Blend</h3>
+                            <p class="product-description">A harmonious blend of bergamot, ylang-ylang, and sandalwood to create tranquility.</p>
+                            <div class="product-meta">
+                                <div class="product-price">$65.00</div>
+                                <div class="product-rating">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <div class="rating-count">(58)</div>
+                                </div>
+                            </div>
+                            <div class="product-cta">
+                                <button class="btn btn-outline btn-block">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1584949602334-4e99f98286a9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Scented Candle" class="product-image">
+                            <div class="product-actions">
+                                <button class="product-action" aria-label="Quick view">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </button>
+                                <button class="product-action" aria-label="Add to wishlist">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">Home Ambiance</div>
+                            <h3 class="product-title">Cedar & Vetiver Scented Candle</h3>
+                            <p class="product-description">A sophisticated blend with notes of cedarwood, vetiver, and subtle citrus undertones.</p>
+                            <div class="product-meta">
+                                <div class="product-price">$56.00</div>
+                                <div class="product-rating">
+                                    <div class="rating-stars">★★★★★</div>
+                                    <div class="rating-count">(72)</div>
+                                </div>
+                            </div>
+                            <div class="product-cta">
+                                <button class="btn btn-outline btn-block">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all fade-in">
+                <a href="#" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Brand Story Section -->
+    <section class="section-lg brand-story">
+        <div class="brand-story-bg" style="background-image: url('https://images.unsplash.com/photo-1551392505-f4056032826e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1997&q=80');"></div>
+        <div class="container">
+            <div class="brand-story-inner">
+                <div class="brand-story-media fade-in-left">
+                    <img src="https://images.unsplash.com/photo-1551392505-f4056032826e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt="Handcrafted natural products" class="brand-story-image">
+                </div>
+                
+                <div class="story-content fade-in-right">
+                    <div class="story-header">
+                        <div class="subtitle">OUR STORY</div>
+                        <h2 class="story-title">Crafted with Intention, Sourced with Integrity</h2>
+                    </div>
+                    
+                    <p class="story-text drop-cap">At LUMIÈRE, we believe in the transformative power of nature's most precious botanicals. Our journey began with a quest to create extraordinary beauty and wellness products that honor ancient traditions while embracing modern science, creating sensory experiences that elevate the everyday.</p>
+                    
+                    <p class="story-text">Each formulation is meticulously crafted in small batches by our master artisans, ensuring uncompromising quality and effectiveness. We travel the world to source the finest ingredients directly from sustainable farms and ethical producers who share our commitment to both people and planet.</p>
+                    
+                    <div class="story-features">
+                        <div class="story-feature">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3 class="feature-title">Ethical Sourcing</h3>
+                                <p class="feature-text">We partner directly with sustainable farms and artisan cooperatives around the world, ensuring fair compensation and ethical practices.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="story-feature">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3 class="feature-title">Artisanal Craftsmanship</h3>
+                                <p class="feature-text">Each product is handcrafted in our atelier using traditional methods that preserve the integrity of our precious ingredients.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="story-feature">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4.06 19.44C3.97 19.8 4.11 20.07 4.32 20.26h0c.3.27.74.39 1.21.32l5.04-.73 5.04.73c.47.07.91-.05 1.21-.32h0c.21-.19.35-.46.26-.82l-.26-.99h-12.4l.14.55Z"></path>
+                                    <path d="M2.71 15.29C2.26 15.74 2 16.37 2 17c0 1.66 1.34 3 3 3h14c1.66 0 3-1.34 3-3 0-.63-.26-1.26-.71-1.71m-18.58 0c.15-.15.33-.28.52-.38L4 15c1.12-.62 2-1.46 2-3V8c0-2.76 2.24-5 5-5s5 2.24 5 5v4c0 .91.4 1.83 1.01 2.47.4.43.84.89 1.49 1.15.32.13.64.22.96.28.31.06.62.09.93.1H21"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3 class="feature-title">Sensory Excellence</h3>
+                                <p class="feature-text">We meticulously design each formulation to create a transformative sensory journey that nurtures both body and spirit.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="story-feature">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2v4m-2 3-2-3m6 3 2-3"></path>
+                                    <path d="M19 11a7 7 0 0 1-13.8 1.7"></path>
+                                    <path d="M7.5 10.5A4.5 4.5 0 1 1 16.5 15"></path>
+                                    <path d="M8.6 19a12 12 0 0 0 6.3 0c.7-.2.7-1 .3-1.5-.3-.4-1-.5-1.7-.5h-3.4c-.7 0-1.4.1-1.7.5-.4.5-.4 1.3.3 1.5Z"></path>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <h3 class="feature-title">Environmental Responsibility</h3>
+                                <p class="feature-text">Our packaging is designed to minimize environmental impact, utilizing recycled materials and biodegradable elements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="testimonials-circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="subtitle">TESTIMONIALS</div>
+                <h2>What Our Clients Say</h2>
+                <p>Discover how our products have transformed the daily rituals of our discerning clientele</p>
+            </div>
+            
+            <div class="testimonials-container fade-in">
+                <div class="testimonials-track" style="transform: translateX(0);">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-quote">The Rose & Chamomile Facial Elixir has truly transformed my skincare routine. The aroma is divine—authentic and pure—and my skin has never looked more radiant. The attention to detail in every aspect of the product speaks volumes about LUMIÈRE's commitment to excellence.</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/23.jpg" alt="Sophia Laurent">
+                                    </div>
+                                    <div class="testimonial-name">Sophia Laurent</div>
+                                    <div class="testimonial-info">Paris, France</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide" style="display: none;">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-quote">As someone with particularly sensitive skin, finding natural products that deliver results has been a lifelong quest. The Lavender & Sea Mineral Bath Soak not only calms my skin but has become an essential part of my evening ritual. The scent profile is complex yet soothing—a true sensory masterpiece.</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Alexander Cohen">
+                                    </div>
+                                    <div class="testimonial-name">Alexander Cohen</div>
+                                    <div class="testimonial-info">New York, USA</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide" style="display: none;">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-quote">The Cedar & Vetiver candle has transformed my home into a sanctuary of calm. The sophisticated scent profile evolves beautifully throughout the day, and the slow, clean burn is evidence of the exceptional quality. LUMIÈRE products are now essential elements in my daily wellness practice.</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">
+                                        <img src="https://randomuser.me/api/portraits/women/46.jpg" alt="Emma Nakamura">
+                                    </div>
+                                    <div class="testimonial-name">Emma Nakamura</div>
+                                    <div class="testimonial-info">Tokyo, Japan</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-controls">
+                    <div class="testimonial-arrow testimonial-prev">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </div>
+                    <div class="testimonial-arrow testimonial-next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="testimonial-dots">
+                    <div class="testimonial-dot active"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-circles">
+            <div class="newsletter-circle newsletter-circle-1"></div>
+            <div class="newsletter-circle newsletter-circle-2"></div>
+        </div>
+        <div class="container">
+            <div class="newsletter-inner">
+                <div class="newsletter-content fade-in">
+                    <h2 class="newsletter-title">Join Our Inner Circle</h2>
+                    <p class="newsletter-subtitle">Subscribe to receive exclusive offers, early access to new releases, and curated wellness rituals from our master formulators.</p>
+                </div>
+                
+                <form class="newsletter-form fade-in">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instagram Section -->
+    <section class="section instagram">
+        <div class="container">
+            <div class="instagram-header fade-in">
+                <div class="subtitle">@LUMIERE</div>
+                <h2 class="instagram-title">Follow Our Journey</h2>
+                <p class="instagram-subtitle">Explore our world of botanical beauty and find inspiration for your wellness rituals</p>
+            </div>
+            
+            <div class="instagram-grid fade-in">
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1575330933415-cea1e7ce53eb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1616011759433-aa7672b280dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1616093207327-400bef7aa79c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1612873649383-629c0cfa6297?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1615424902873-4a0537517241?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="instagram-item">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80" alt="Instagram" class="instagram-image">
+                    <div class="instagram-overlay">
+                        <div class="instagram-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instagram-cta fade-in">
+                <a href="#" class="btn">Follow on Instagram</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-widget">
+                    <a href="#" class="footer-logo">LUMIÈRE</a>
+                    <p class="footer-motto">Elevating daily rituals through the extraordinary power of nature's finest botanicals.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">Shop</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">All Collections</a></li>
+                        <li class="footer-link"><a href="#">Facial Care</a></li>
+                        <li class="footer-link"><a href="#">Essential Oils</a></li>
+                        <li class="footer-link"><a href="#">Bath & Body</a></li>
+                        <li class="footer-link"><a href="#">Home Ambiance</a></li>
+                        <li class="footer-link"><a href="#">Gift Sets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">About</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Our Story</a></li>
+                        <li class="footer-link"><a href="#">Ingredient Philosophy</a></li>
+                        <li class="footer-link"><a href="#">Sustainability</a></li>
+                        <li class="footer-link"><a href="#">Journal</a></li>
+                        <li class="footer-link"><a href="#">Press</a></li>
+                        <li class="footer-link"><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">Contact</h3>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                23 Rue Saint-Honoré<br>
+                                75001 Paris, France
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                +33 (0) 1 42 61 xx xx
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="contact-text">
+                                contact@lumiere.com
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 LUMIÈRE. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-legal-link">Terms of Service</a>
+                    <a href="#" class="footer-legal-link">Privacy Policy</a>
+                    <a href="#" class="footer-legal-link">Cookie Policy</a>
+                    <a href="#" class="footer-legal-link">Shipping & Returns</a>
+                </div>
+                <div class="footer-payment">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa" class="payment-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard" class="payment-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/200px-PayPal.svg.png" alt="PayPal" class="payment-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/200px-American_Express_logo_%282018%29.svg.png" alt="American Express" class="payment-icon">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Quick view modal -->
+    <div class="modal" id="quick-view-modal">
+        <button class="modal-close">×</button>
+        <div class="modal-content">
+            <!-- Modal content will be dynamically generated -->
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom cursor
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorInner = document.querySelector('.custom-cursor-inner');
+            const links = document.querySelectorAll('a, button, .nav-icon, .product-card, .featured-item, .collection-tab, .testimonial-dot, .social-link');
+            
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                cursorInner.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+                
+                // Only show cursor on desktop
+                if (window.innerWidth > 1024) {
+                    cursor.classList.add('cursor-active');
+                    cursorInner.classList.add('cursor-active');
+                }
+            });
+            
+            document.addEventListener('mousedown', function() {
+                cursor.classList.add('cursor-click');
+                cursorInner.classList.add('cursor-click');
+            });
+            
+            document.addEventListener('mouseup', function() {
+                cursor.classList.remove('cursor-click');
+                cursorInner.classList.remove('cursor-click');
+            });
+            
+            links.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    cursor.classList.add('cursor-hover');
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    cursor.classList.remove('cursor-hover');
+                });
+            });
+            
+            // Initialize particles
+            if (typeof particlesJS !== 'undefined' && window.innerWidth > 1024) {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 15,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#d4af37"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.3,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 0.5,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 6,
+                            "random": true,
+                            "anim": {
+                                "enable": true,
+                                "speed": 2,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": false
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 0.8,
+                            "direction": "none",
+                            "random": true,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "bubble"
+                            },
+                            "onclick": {
+                                "enable": false
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "bubble": {
+                                "distance": 150,
+                                "size": 8,
+                                "duration": 2,
+                                "opacity": 0.8,
+                                "speed": 3
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+            
+            // Theme Toggle
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+            
+            // Check saved preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = savedTheme || (systemPrefersDark ? 'night' : 'day');
+            
+            // Apply initial theme
+            html.dataset.theme = initialTheme;
+            toggle.textContent = initialTheme === 'night' ? '☀️' : '☾';
+            
+            // Handle toggle click
+            toggle.addEventListener('click', function() {
+                const newTheme = html.dataset.theme === 'night' ? 'day' : 'night';
+                html.dataset.theme = newTheme;
+                localStorage.setItem('theme', newTheme);
+                toggle.textContent = newTheme === 'night' ? '☀️' : '☾';
+            });
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+            
+            // Scroll Header
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll down button
+            const scrollDown = document.getElementById('scroll-down');
+            
+            if (scrollDown) {
+                scrollDown.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+            
+            // Collection Tabs
+            const tabs = document.querySelectorAll('.collection-tab');
+            const tabUnderline = document.querySelector('.tab-underline');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Update tab underline position
+                    const tabRect = tab.getBoundingClientRect();
+                    const tabsContainerRect = tab.parentElement.getBoundingClientRect();
+                    tabUnderline.style.width = `${tabRect.width}px`;
+                    tabUnderline.style.transform = `translateX(${tabRect.left - tabsContainerRect.left}px)`;
+                    
+                    // In a real implementation, this would show the corresponding tab content
+                    // For now, we'll just keep the first tab content visible
+                });
+            });
+            
+            // Initialize tab underline position
+            if (tabs.length > 0 && tabUnderline) {
+                const activeTab = document.querySelector('.collection-tab.active') || tabs[0];
+                const tabRect = activeTab.getBoundingClientRect();
+                const tabsContainerRect = activeTab.parentElement.getBoundingClientRect();
+                tabUnderline.style.width = `${tabRect.width}px`;
+                tabUnderline.style.transform = `translateX(${tabRect.left - tabsContainerRect.left}px)`;
+            }
+            
+            // Testimonials Carousel
+            const testimonialTrack = document.querySelector('.testimonials-track');
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const testimonialDots = document.querySelectorAll('.testimonial-dot');
+            const prevButton = document.querySelector('.testimonial-prev');
+            const nextButton = document.querySelector('.testimonial-next');
+            let currentIndex = 0;
+            
+            function goToSlide(index) {
+                if (!testimonialTrack) return;
+                
+                // Ensure index is within bounds
+                if (index < 0) index = testimonialSlides.length - 1;
+                if (index >= testimonialSlides.length) index = 0;
+                
+                testimonialSlides.forEach((slide, i) => {
+                    slide.style.display = i === index ? 'block' : 'none';
+                });
+                
+                testimonialDots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                currentIndex = index;
+            }
+            
+            if (prevButton) {
+                prevButton.addEventListener('click', () => {
+                    goToSlide(currentIndex - 1);
+                });
+            }
+            
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    goToSlide(currentIndex + 1);
+                });
+            }
+            
+            testimonialDots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+            });
+            
+            // Auto advance testimonials
+            setInterval(() => {
+                if (testimonialSlides.length > 1) {
+                    goToSlide((currentIndex + 1) % testimonialSlides.length);
+                }
+            }, 6000);
+            
+            // Intersection Observer for fade-in elements
+            const fadeElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger-fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Quick view modal
+            const quickViewButtons = document.querySelectorAll('.product-action');
+            const modal = document.getElementById('quick-view-modal');
+            const modalClose = modal.querySelector('.modal-close');
+            
+            quickViewButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    modal.classList.add('active');
+                    document.body.classList.add('no-scroll');
+                });
+            });
+            
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                }
+            });
+            
+            // Product card 3D effect
+            const cards = document.querySelectorAll('.product-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    if (window.innerWidth > 1024) {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        const rotateX = (y - centerY) / 10;
+                        const rotateY = (centerX - x) / 10;
+                        
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                    }
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+            
+            // Brand story media parallax effect
+            const brandStoryMedia = document.querySelector('.brand-story-media');
+            
+            if (brandStoryMedia && window.innerWidth > 1024) {
+                window.addEventListener('scroll', () => {
+                    const scrollPosition = window.scrollY;
+                    const mediaRect = brandStoryMedia.getBoundingClientRect();
+                    const centerOffset = window.innerHeight / 2 - mediaRect.height / 2;
+                    const distanceFromCenter = mediaRect.top - centerOffset;
+                    
+                    if (Math.abs(distanceFromCenter) < window.innerHeight) {
+                        const parallaxValue = distanceFromCenter * 0.15;
+                        brandStoryMedia.style.transform = `perspective(1000px) translateY(${parallaxValue}px) rotateX(${parallaxValue * 0.05}deg)`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
