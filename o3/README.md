@@ -1,4 +1,3 @@
-```markdown
 <!--
  ███████╗ ██████╗██╗      █████╗ ████████╗    ███╗   ██╗ █████╗ ███████╗
  ██╔════╝██╔════╝██║     ██╔══██╗╚══██╔══╝    ████╗  ██║██╔══██╗██╔════╝
@@ -303,4 +302,4 @@ Commercial usage encouraged; just keep the credits, don’t blame us if roses bu
   <b>Craft luxury, code boldly, breathe deeply.</b><br/>
   <i>— The Éclat Naturals Engineering Guild</i>
 </p>
-```
+
