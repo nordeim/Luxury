@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Luminaire — Botanical Luxury & Aromatherapy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ───────────────────────── Base Theme Tokens ───────────────────────── */
+    :root{
+      --bg: #f8f6f1;
+      --text:#111;
+      --accent:#d4af37;
+      --card:#ffffff;
+      --card-alt:#fcfbf9;
+      --radius:0.75rem;
+      color-scheme: light;
+    }
+    html[data-theme="night"]{
+      --bg:#0d0d0d;
+      --text:#e6e6e6;
+      --accent:#1f7a5b;
+      --card:#1a1a1a;
+      --card-alt:#151515;
+      color-scheme: dark;
+    }
+
+    /* ──────────────────────── Global Resets ───────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font-family:'Lato',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      min-height:100vh;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+    img,video{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+    section{padding:4rem 1rem;}
+    h1,h2,h3,h4{font-family:'Cinzel',serif;font-weight:700;line-height:1.2;}
+    h2{font-size:clamp(1.75rem,4vw,2.75rem);margin-bottom:1rem;}
+    .container{max-width:1200px;margin-inline:auto;}
+
+    /* ─────────────────────── Header / Navigation ─────────────────────── */
+    .site-header{
+      position:fixed;top:0;left:0;right:0;z-index:999;
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.15);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.75rem 1rem;
+    }
+    html[data-theme="night"] .site-header{background:rgba(13,13,13,0.25);}
+    .logo{font-family:'Cinzel',serif;font-size:1.25rem;letter-spacing:2px;}
+    .primary-nav{display:none;gap:2rem;}
+    .primary-nav a{position:relative;padding:0.25rem 0;}
+    .primary-nav a::after{content:'';position:absolute;left:0;bottom:-4px;
+      width:0;height:2px;background:var(--accent);transition:width .25s}
+    .primary-nav a:hover::after{width:100%;}
+    .nav-right{display:flex;align-items:center;gap:1.25rem;}
+    .theme-toggle{font-size:1.25rem;line-height:1;}
+    .cart-link{position:relative;font-size:1.25rem;}
+    .cart-count{
+      position:absolute;top:-6px;right:-10px;
+      background:var(--accent);color:#fff;font-size:0.7rem;
+      padding:0 5px;border-radius:999px;
+    }
+
+    /* Desktop nav */
+    @media(min-width:600px){.primary-nav{display:flex;}}
+
+    /* ─────────────────────────── Hero ─────────────────────────── */
+    .hero{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero video{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:brightness(60%);}
+    .hero-content{
+      position:relative;z-index:2;text-align:center;color:#fff;padding:0 1rem;
+      display:flex;flex-direction:column;align-items:center;gap:1.25rem;
+      animation:fadeIn 1s ease-out;
+    }
+    .hero h1{font-size:clamp(2.5rem,6vw,4rem);}
+    .btn-primary{
+      background:var(--accent);color:#fff;
+      padding:0.9rem 2.75rem;
+      border-radius:999px;
+      box-shadow:0 4px 12px rgb(0 0 0 /25%);
+      transition:transform .25s,box-shadow .25s;
+    }
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgb(0 0 0 /30%);}
+    .btn-primary:active{transform:translateY(0);box-shadow:0 4px 12px rgb(0 0 0 /20%);}
+
+    /* ──────────────────── Bestsellers Grid ───────────────────── */
+    .grid{display:grid;gap:1.5rem;}
+    .bestsellers .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 2px 6px rgb(0 0 0 /10%);
+      transition:transform .3s ease,box-shadow .3s ease;
+    }
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 20px rgb(0 0 0 /12%);}
+    .card img{aspect-ratio:3/4;object-fit:cover;width:100%;}
+    .card-body{padding:1rem;display:flex;flex-direction:column;gap:0.5rem;}
+    .card-title{font-family:'Playfair Display',serif;font-size:1.1rem;}
+    .price{font-weight:700;}
+    .add-btn{
+      margin-top:auto;background:var(--accent);color:#fff;
+      border-radius:30px;padding:0.5rem 1rem;font-size:0.9rem;
+      transition:filter .25s;
+    }
+    .add-btn:hover{filter:brightness(1.1);}
+
+    /* ─────────────────── Brand Story (two column) ─────────────── */
+    .story{display:flex;flex-direction:column-reverse;gap:2rem;align-items:center;}
+    .story img{border-radius:var(--radius);box-shadow:0 4px 18px rgb(0 0 0 /10%);}
+    .story-text{max-width:600px;}
+    .story-text p{margin-bottom:1rem;font-family:'Playfair Display',serif;font-style:italic;}
+    @media(min-width:1024px){
+      .story{flex-direction:row;}
+      .story img{flex:1;}
+      .story-text{flex:1;padding-right:3rem;}
+    }
+
+    /* ────────────────────── Testimonial Carousel ─────────────── */
+    .carousel{position:relative;overflow:hidden;}
+    .carousel-track{
+      display:flex;scroll-snap-type:x mandatory;overflow-x:auto;scroll-behavior:smooth;
+    }
+    .testimonial{
+      flex:0 0 100%;scroll-snap-align:center;padding:2rem 1rem;text-align:center;
+      background:var(--card-alt);
+    }
+    .testimonial blockquote{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;}
+    .testimonial cite{font-style:normal;font-size:0.9rem;opacity:0.8;}
+    .carousel-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:var(--accent);color:#fff;width:2.25rem;height:2.25rem;
+      border-radius:50%;display:grid;place-items:center;font-size:1rem;
+    }
+    .carousel-btn.prev{left:0.5rem;}
+    .carousel-btn.next{right:0.5rem;}
+
+    /* ────────────────────── Membership Tiers ─────────────── */
+    .tiers{display:grid;gap:1.5rem;margin-top:2rem;}
+    .tiers article{
+      background:var(--card);padding:2rem;border-radius:var(--radius);
+      text-align:center;box-shadow:0 2px 8px rgb(0 0 0 /10%);
+      display:flex;flex-direction:column;gap:1rem;
+    }
+    .tiers h3{font-size:1.4rem;margin-bottom:0.5rem;}
+    .tiers ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;}
+    .tiers .btn-primary{margin-top:auto;font-size:0.9rem;}
+    @media(min-width:800px){.tiers{grid-template-columns:repeat(3,1fr);} .tiers article:nth-child(3){transform:translateY(-6px);} }
+
+    /* ───────────────────── Newsletter Banner ─────────────── */
+    .newsletter{
+      background:linear-gradient(135deg,var(--accent) 0%,#f5e8b6 100%);
+      color:#000;text-align:center;padding:3rem 1rem;border-radius:var(--radius);
+    }
+    .newsletter input{
+      padding:0.75rem 1rem;border:none;border-radius:30px;max-width:280px;width:100%;margin-right:0.5rem;
+    }
+    .newsletter button{background:#000;color:#fff;padding:0.75rem 1.5rem;border-radius:30px;}
+    .newsletter form{display:flex;justify-content:center;flex-wrap:wrap;gap:0.75rem;margin-top:1rem;}
+
+    /* ───────────────────────── Footer ───────────────────────── */
+    footer{background:var(--card-alt);padding:3rem 1rem;margin-top:4rem;}
+    .footer-grid{display:grid;gap:2rem;max-width:1200px;margin-inline:auto;}
+    .footer-col h4{font-family:'Cinzel',serif;font-size:1rem;margin-bottom:0.75rem;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.5rem;font-size:0.9rem;}
+    .social{display:flex;gap:1rem;font-size:1.25rem;margin-top:1rem;}
+    .social a{transition:color .3s;}
+    .social a:hover{color:var(--accent);}
+    @media(min-width:600px){.footer-grid{grid-template-columns:repeat(4,1fr);} }
+
+    /* ────────────────────── Animations ───────────────────── */
+    @keyframes fadeIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+
+    /* ─────────────────── Intersection Fade-in ─────────────── */
+    .reveal{opacity:0;transform:translateY(15px);transition:all .6s ease-out;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+  </style>
+</head>
+
+<body>
+  <!-- ✦✦ Header ✦✦ -->
+  <header class="site-header" id="top">
+    <a href="#" class="logo">LUMINAIRE</a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <a href="#shop">Shop</a>
+      <a href="#rituals">Rituals</a>
+      <a href="#journal">Journal</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">☾</button>
+      <a href="#" class="cart-link" aria-label="Cart">
+        🛍️ <span class="cart-count" aria-hidden="true">2</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ✦✦ Hero ✦✦ -->
+    <section class="hero">
+      <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1556228453-efd75c30ae0d?auto=format&fit=crop&w=900&q=80">
+        <source src="https://cdn.coverr.co/videos/coverr-flowers-with-sunlight-8306/1080p.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-content">
+        <h1>Nurture the&nbsp;Senses</h1>
+        <p>Artisanal skincare & aromatics crafted from the world’s purest botanicals.</p>
+        <a href="#shop" class="btn-primary">Shop the&nbsp;Collection</a>
+      </div>
+    </section>
+
+    <!-- ✦✦ Bestsellers ✦✦ -->
+    <section id="shop" class="bestsellers container reveal">
+      <h2>Bestsellers</h2>
+      <div class="grid">
+        <!-- Product card -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1585305575219-f3dfc48e292b?auto=format&fit=crop&w=500&q=80" alt="Rose Geranium Soap Bar">
+          <div class="card-body">
+            <h3 class="card-title">Rose Geranium Soap</h3>
+            <span class="price">$22</span>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1616220722363-6e744f701e90?auto=format&fit=crop&w=500&q=80" alt="Lavender Serenity Oil Blend">
+          <div class="card-body">
+            <h3 class="card-title">Lavender Serenity Oil</h3>
+            <span class="price">$38</span>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1629113663868-52c209300dd9?auto=format&fit=crop&w=500&q=80" alt="Citrus Bloom Hand Cream">
+          <div class="card-body">
+            <h3 class="card-title">Citrus Bloom Cream</h3>
+            <span class="price">$28</span>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=500&q=80" alt="Sandalwood Candle">
+          <div class="card-body">
+            <h3 class="card-title">Sandalwood Candle</h3>
+            <span class="price">$45</span>
+            <button class="add-btn">Add to Cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ✦✦ Brand Story ✦✦ -->
+    <section id="about" class="container reveal">
+      <div class="story">
+        <div class="story-text">
+          <h2>Our Holistic Philosophy</h2>
+          <p>Rooted in nature and elevated by science, Luminaire harnesses the potency of sustainably sourced botanicals to create rituals that restore equilibrium to skin, body, and mind.</p>
+          <p>Every formulation is handcrafted in small batches, ensuring unparalleled freshness and efficacy. We collaborate directly with family-run farms across the globe, championing fair trade and regenerative agriculture.</p>
+          <a href="#" class="btn-primary">Discover Our Story</a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1583511655629-3128b932f49c?auto=format&fit=crop&w=700&q=80" alt="Apothecary crafting natural skincare">
+      </div>
+    </section>
+
+    <!-- ✦✦ Testimonial Carousel ✦✦ -->
+    <section class="container reveal">
+      <h2>In Their Words</h2>
+      <div class="carousel" aria-roledescription="carousel">
+        <button class="carousel-btn prev" aria-label="Previous">&lt;</button>
+
+        <div class="carousel-track" id="carousel-track">
+          <article class="testimonial">
+            <blockquote>“The Lavender Serenity Oil has transformed my nightly ritual—pure tranquility in a bottle.”</blockquote>
+            <cite>— Sophia C., New York</cite>
+          </article>
+          <article class="testimonial">
+            <blockquote>“I’ve tried countless candles; none match the depth and warmth of Luminaire's Sandalwood.”</blockquote>
+            <cite>— Marc D., Paris</cite>
+          </article>
+          <article class="testimonial">
+            <blockquote>“Knowing each ingredient’s origin makes me feel part of a greater, sustainable story.”</blockquote>
+            <cite>— Aisha R., Dubai</cite>
+          </article>
+        </div>
+
+        <button class="carousel-btn next" aria-label="Next">&gt;</button>
+      </div>
+    </section>
+
+    <!-- ✦✦ Membership Tiers ✦✦ -->
+    <section class="container reveal">
+      <h2>Membership Tiers</h2>
+      <div class="tiers">
+        <article>
+          <h3>Lite</h3>
+          <ul>
+            <li>Early access to launches</li>
+            <li>Birthday gift</li>
+            <li>Member-only newsletter</li>
+          </ul>
+          <button class="btn-primary">Join Free</button>
+        </article>
+        <article>
+          <h3>Essential</h3>
+          <ul>
+            <li>All Lite perks</li>
+            <li>Free shipping</li>
+            <li>Points on every order</li>
+          </ul>
+          <button class="btn-primary">Join — $49/yr</button>
+        </article>
+        <article>
+          <h3>Luminary ✨</h3>
+          <ul>
+            <li>All Essential perks</li>
+            <li>Quarterly ritual boxes</li>
+            <li>Concierge consultations</li>
+          </ul>
+          <button class="btn-primary">Join — $199/yr</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- ✦✦ Newsletter ✦✦ -->
+    <section class="newsletter container reveal">
+      <h2>Stay in the Glow</h2>
+      <p>Sign up for insider launches, rituals, and 10% off your first order.</p>
+      <form>
+        <input type="email" placeholder="Your email address" aria-label="Email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ✦✦ Footer ✦✦ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social">
+          <a href="#" aria-label="Instagram">📸</a>
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─────────────────────── JavaScript ─────────────────────── -->
+  <script>
+  /* Theme Toggle */
+  const html = document.documentElement;
+  const toggleBtn = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme');
+
+  if(savedTheme){ html.dataset.theme = savedTheme; toggleBtn.textContent = savedTheme==='night'?'☀️':'☾'; }
+  else if(matchMedia('(prefers-color-scheme: dark)').matches){ html.dataset.theme='night'; toggleBtn.textContent='☀️'; }
+
+  toggleBtn.addEventListener('click',()=>{
+    const newTheme = html.dataset.theme==='night' ? 'day' : 'night';
+    html.dataset.theme = newTheme;
+    localStorage.setItem('theme',newTheme);
+    toggleBtn.textContent = newTheme==='night'?'☀️':'☾';
+  });
+
+  /* IntersectionObserver for reveal animations */
+  const reveals=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(ent=>{ if(ent.isIntersecting){ ent.target.classList.add('visible'); io.unobserve(ent.target);} });
+  },{threshold:0.2});
+  reveals.forEach(el=>io.observe(el));
+
+  /* Simple Carousel */
+  const track=document.getElementById('carousel-track');
+  document.querySelector('.carousel-btn.next').onclick=()=>{ track.scrollBy({left:track.clientWidth,behavior:'smooth'}); };
+  document.querySelector('.carousel-btn.prev').onclick=()=>{ track.scrollBy({left:-track.clientWidth,behavior:'smooth'}); };
+  </script>
+</body>
+</html>
