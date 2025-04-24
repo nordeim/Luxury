@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover luxury natural beauty products and aromatherapy essentials crafted with the finest ingredients for your wellbeing.">
+    <title>LUMIÈRE | Luxury Natural Beauty & Aromatherapy</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            /* Typography */
+            --font-heading: 'Playfair Display', serif;
+            --font-heading-accent: 'Cinzel', serif;
+            --font-body: 'Jost', sans-serif;
+            --font-ui: 'Lato', sans-serif;
+            
+            /* Colors - Day Mode */
+            --color-background: #fcfaf7;
+            --color-surface: #ffffff;
+            --color-text-primary: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-accent: #d4af37; /* Champagne gold */
+            --color-accent-light: #e9d98f;
+            --color-accent-dark: #a58829;
+            --color-border: #e6e0d8;
+            --color-shadow: rgba(26, 26, 26, 0.08);
+            --color-overlay: rgba(26, 26, 26, 0.4);
+            --color-overlay-light: rgba(26, 26, 26, 0.2);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 5rem;
+            --spacing-xxl: 8rem;
+            
+            /* Container widths */
+            --container-sm: 640px;
+            --container-md: 1024px;
+            --container-lg: 1280px;
+            
+            /* Border radius */
+            --radius-sm: 2px;
+            --radius-md: 4px;
+            --radius-lg: 8px;
+            --radius-pill: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px var(--color-shadow);
+            --shadow-md: 0 4px 16px var(--color-shadow);
+            --shadow-lg: 0 8px 24px var(--color-shadow);
+            --shadow-inner: inset 0 2px 4px var(--color-shadow);
+            
+            /* Z-index layers */
+            --z-header: 100;
+            --z-drawer: 200;
+            --z-modal: 300;
+            --z-toast: 400;
+        }
+        
+        /* Dark Theme Colors */
+        html[data-theme="night"] {
+            --color-background: #121212;
+            --color-surface: #1e1e1e;
+            --color-text-primary: #f0f0f0;
+            --color-text-secondary: #b0b0b0;
+            --color-accent: #50d890; /* Emerald green */
+            --color-accent-light: #7ae5ac;
+            --color-accent-dark: #3bab71;
+            --color-border: #2d2d2d;
+            --color-shadow: rgba(0, 0, 0, 0.2);
+            --color-overlay: rgba(0, 0, 0, 0.5);
+            --color-overlay-light: rgba(0, 0, 0, 0.3);
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+            transition: background-color var(--transition-medium), color var(--transition-medium);
+        }
+        
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+        }
+        
+        button, input, textarea, select {
+            font: inherit;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: -0.01em;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        p {
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+        }
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--color-accent);
+        }
+        
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .container-sm {
+            max-width: var(--container-sm);
+        }
+        
+        .container-md {
+            max-width: var(--container-md);
+        }
+        
+        /* Section */
+        .section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .section-sm {
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .section-lg {
+            padding: var(--spacing-xxl) 0;
+        }
+        
+        /* Typography Utilities */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-accent {
+            color: var(--color-accent);
+        }
+        
+        .subtitle {
+            font-family: var(--font-heading-accent);
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-header);
+            padding: var(--spacing-sm) 0;
+            background-color: rgba(252, 250, 247, 0.8);
+            backdrop-filter: blur(10px);
+            transition: background-color var(--transition-medium), padding var(--transition-medium);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        html[data-theme="night"] .header {
+            background-color: rgba(18, 18, 18, 0.8);
+        }
+        
+        .header.scrolled {
+            padding: calc(var(--spacing-xs) / 2) 0;
+            background-color: var(--color-surface);
+        }
+        
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: var(--font-heading-accent);
+            font-size: 1.5rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-menu {
+            display: none;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+        
+        .nav-link {
+            font-family: var(--font-ui);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+            transition: color var(--transition-fast), border-color var(--transition-fast);
+        }
+        
+        .nav-link:hover {
+            border-color: var(--color-accent);
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        
+        .nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            color: var(--color-text-primary);
+            transition: color var(--transition-fast);
+            cursor: pointer;
+        }
+        
+        .nav-icon:hover {
+            color: var(--color-accent);
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            font-size: 0.625rem;
+            font-weight: 600;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-radius: 50%;
+        }
+        
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--color-text-primary);
+            transition: transform var(--transition-fast), opacity var(--transition-fast), background-color var(--transition-fast);
+        }
+        
+        .menu-toggle.active span:first-child {
+            transform: translateY(6px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:last-child {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 80%;
+            max-width: 320px;
+            background-color: var(--color-surface);
+            padding: var(--spacing-xl) var(--spacing-md);
+            transform: translateX(100%);
+            transition: transform var(--transition-medium);
+            z-index: var(--z-drawer);
+            box-shadow: var(--shadow-lg);
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+        
+        .mobile-nav-close {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+            margin-top: var(--spacing-lg);
+        }
+        
+        .mobile-nav-item {
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .mobile-nav-link {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 500;
+            padding: var(--spacing-xs) 0;
+        }
+        
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: 1px solid var(--color-text-primary);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-primary);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-shadow);
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .btn:hover::after {
+            opacity: 0.1;
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+            color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-accent-dark);
+            border-color: var(--color-accent-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--color-accent);
+            color: #ffffff;
+        }
+        
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+        
+        .btn-icon {
+            display: inline-flex;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-primary);
+            transition: color var(--transition-fast);
+        }
+        
+        .btn-icon:hover {
+            color: var(--color-accent);
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            color: var(--color-text-primary);
+            border-radius: 50%;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .theme-toggle:hover {
+            background-color: var(--color-border);
+        }
+        
+        /* Hero section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 0;
+        }
+        
+        .hero-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05); /* Slight zoom effect */
+            animation: subtle-zoom 20s infinite alternate;
+        }
+        
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            max-width: 650px;
+        }
+        
+        .hero-title {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-heading-accent);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: var(--spacing-md);
+            opacity: 0.9;
+        }
+        
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
+        }
+        
+        /* Collections section */
+        .collections {
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .collection-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .collection-tab {
+            font-family: var(--font-ui);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: none;
+            background: none;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+        
+        .collection-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-accent);
+            transition: width var(--transition-fast), left var(--transition-fast);
+        }
+        
+        .collection-tab:hover {
+            color: var(--color-text-primary);
+        }
+        
+        .collection-tab.active {
+            color: var(--color-accent);
+        }
+        
+        .collection-tab.active::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .product-card {
+            position: relative;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .product-image {
+            position: relative;
+            padding-top: 125%;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: var(--spacing-sm);
+            left: var(--spacing-sm);
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            border-radius: var(--radius-sm);
+            z-index: 1;
+        }
+        
+        .product-wishlist {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .product-wishlist:hover {
+            background-color: #ffffff;
+        }
+        
+        .product-content {
+            padding: var(--spacing-sm);
+        }
+        
+        .product-category {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .product-price {
+            font-family: var(--font-ui);
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-xs);
+        }
+        
+        .view-all {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+        }
+        
+        /* Brand story section */
+        .brand-story {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-story-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .brand-story-media {
+            position: relative;
+            padding-top: 100%;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+        
+        .brand-story-media img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .story-item {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .story-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent-dark);
+            border-radius: 50%;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        /* Testimonials section */
+        .testimonials {
+            position: relative;
+            background-color: var(--color-surface);
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .testimonials-carousel {
+            position: relative;
+            margin-top: var(--spacing-lg);
+            overflow: hidden;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            transition: transform var(--transition-slow);
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-quote {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .testimonial-quote::before,
+        .testimonial-quote::after {
+            content: '"';
+            color: var(--color-accent);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .testimonial-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .testimonial-info {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .testimonials-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: var(--spacing-md);
+        }
+        
+        .testimonials-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--color-border);
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .testimonials-dot.active {
+            background-color: var(--color-accent);
+        }
+        
+        /* Membership section */
+        .membership {
+            position: relative;
+        }
+        
+        .membership-tiers {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .tier-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--color-surface);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tier-card.featured {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tier-header {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .tier-name {
+            font-family: var(--font-heading-accent);
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tier-price {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tier-amount {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+        
+        .tier-period {
+            font-size: 0.875rem;
+            margin-left: 0.25rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .tier-description {
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tier-features {
+            flex-grow: 1;
+            margin-bottom: var(--spacing-md);
+            list-style: none;
+        }
+        
+        .tier-feature {
+            display: flex;
+            align-items: center;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier-feature::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: var(--color-accent-light);
+            color: var(--color-accent-dark);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            font-size: 0.75rem;
+        }
+        
+        .tier-actions {
+            margin-top: auto;
+        }
+        
+        /* Newsletter section */
+        .newsletter {
+            position: relative;
+            background-color: var(--color-accent);
+            color: #ffffff;
+            padding: var(--spacing-lg) 0;
+        }
+        
+        .newsletter-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-md);
+            align-items: center;
+        }
+        
+        .newsletter-content {
+            text-align: center;
+        }
+        
+        .newsletter-title {
+            color: #ffffff;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .newsletter-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--radius-sm);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .newsletter-input:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+        
+        .newsletter-submit {
+            background-color: #ffffff;
+            color: var(--color-accent);
+            border: none;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .newsletter-submit:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .newsletter-submit:active {
+            transform: translateY(1px);
+        }
+        
+        /* Footer */
+        .footer {
+            position: relative;
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+        }
+        
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+        
+        .footer-widget {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .footer-logo {
+            display: inline-block;
+            font-family: var(--font-heading-accent);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-text {
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link a {
+            font-size: 0.875rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-link a:hover {
+            color: var(--color-accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            background-color: var(--color-border);
+            border-radius: 50%;
+            color: var(--color-text-primary);
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background-color: var(--color-accent);
+            color: #ffffff;
+        }
+        
+        .footer-bottom {
+            padding-top: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            text-align: center;
+        }
+        
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+        
+        .footer-legal {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+        
+        .footer-legal-link {
+            font-size: 0.75rem;
+            color: var(--color-text-secondary);
+        }
+        
+        /* Animations */
+        @keyframes subtle-zoom {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Fade-in elements */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive styles */
+        @media (min-width: 640px) {
+            .mobile-nav {
+                width: 360px;
+            }
+            
+            .hero-content {
+                max-width: 500px;
+            }
+            
+            .newsletter-form {
+                flex-direction: row;
+            }
+            
+            .newsletter-input {
+                flex-grow: 1;
+            }
+            
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .membership-tiers {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .brand-story-inner {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+            
+            .footer-inner {
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            
+            .membership-tiers {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .nav-menu {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+            
+            .newsletter-inner {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+            
+            .newsletter-content {
+                text-align: left;
+            }
+            
+            .newsletter-form {
+                margin: 0 0 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">LUMIÈRE</a>
+            
+            <nav class="nav">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link">Shop</a></li>
+                    <li><a href="#" class="nav-link">Collections</a></li>
+                    <li><a href="#" class="nav-link">Our Story</a></li>
+                    <li><a href="#" class="nav-link">Journal</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="theme-toggle">☾</button>
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="nav-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div class="nav-icon cart-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span class="cart-count">3</span>
+                    </div>
+                    <div class="menu-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-close">×</div>
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Shop</a></li>
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Collections</a></li>
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Our Story</a></li>
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Journal</a></li>
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Account</a></li>
+            <li class="mobile-nav-item"><a href="#" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=80" alt="Natural ingredients for beauty products" class="hero-image">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="subtitle">NATURE'S ESSENCE</div>
+                <h1 class="hero-title">Discover the Luxury of Pure Natural Beauty</h1>
+                <p class="hero-subtitle">Handcrafted aromatherapy and skincare formulations using the finest botanical ingredients, sourced ethically from around the world.</p>
+                <div class="hero-actions">
+                    <a href="#" class="btn btn-primary btn-lg">Explore Collections</a>
+                    <a href="#" class="btn btn-outline btn-lg">Our Philosophy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Collections Section -->
+    <section class="section collections">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="subtitle">CURATED SELECTION</div>
+                <h2>Discover Our Collections</h2>
+                <p>Explore our meticulously crafted ranges designed to nourish your skin and elevate your senses.</p>
+            </div>
+            
+            <div class="collection-tabs fade-in">
+                <button class="collection-tab active">All</button>
+                <button class="collection-tab">Bath & Body</button>
+                <button class="collection-tab">Facial Care</button>
+                <button class="collection-tab">Essential Oils</button>
+                <button class="collection-tab">Gift Sets</button>
+            </div>
+            
+            <div class="products-grid fade-in">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1547793548-7a0e7dfdb24f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Lavender Bath Salt">
+                        <div class="product-badge">Bestseller</div>
+                        <button class="product-wishlist">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Bath & Body</div>
+                        <h3 class="product-title">Lavender & Sea Salt Soak</h3>
+                        <div class="product-price">$48.00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-outline">Add to Cart</button>
+                            <button class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="12" x2="2" y2="12"></line>
+                                    <polyline points="15 5 22 12 15 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Rose Facial Oil">
+                        <button class="product-wishlist">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Facial Care</div>
+                        <h3 class="product-title">Rejuvenating Rose Facial Oil</h3>
+                        <div class="product-price">$72.00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-outline">Add to Cart</button>
+                            <button class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="12" x2="2" y2="12"></line>
+                                    <polyline points="15 5 22 12 15 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598662972299-5408ddb8a3dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Essential Oil Set">
+                        <div class="product-badge">New</div>
+                        <button class="product-wishlist">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Essential Oils</div>
+                        <h3 class="product-title">Serenity Essential Oil Blend</h3>
+                        <div class="product-price">$65.00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-outline">Add to Cart</button>
+                            <button class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="12" x2="2" y2="12"></line>
+                                    <polyline points="15 5 22 12 15 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1513865019903-5b17c3fe6195?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Luxury Gift Set">
+                        <button class="product-wishlist">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Gift Sets</div>
+                        <h3 class="product-title">Luxury Self-Care Gift Collection</h3>
+                        <div class="product-price">$120.00</div>
+                        <div class="product-actions">
+                            <button class="btn btn-sm btn-outline">Add to Cart</button>
+                            <button class="btn-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="12" x2="2" y2="12"></line>
+                                    <polyline points="15 5 22 12 15 19"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-all fade-in">
+                <a href="#" class="btn btn-outline">View All Products</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Brand Story Section -->
+    <section class="section brand-story">
+        <div class="container">
+            <div class="brand-story-inner">
+                <div class="brand-story-media fade-in">
+                    <img src="https://images.unsplash.com/photo-1531693760604-2bd0be78d29b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Handcrafting natural products">
+                </div>
+                
+                <div class="brand-story-content fade-in">
+                    <div class="subtitle">OUR PHILOSOPHY</div>
+                    <h2>Crafted with Care, Designed for Wellbeing</h2>
+                    <p>At LUMIÈRE, we believe in the transformative power of nature. Our journey began with a simple mission: to create extraordinary beauty and wellness products that honor ancient traditions while embracing modern science.</p>
+                    
+                    <div class="story-item">
+                        <div class="story-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3>Ethical Sourcing</h3>
+                        <p>We partner directly with sustainable farms and cooperatives around the world to ensure our ingredients are harvested with respect for both people and planet.</p>
+                    </div>
+                    
+                    <div class="story-item">
+                        <div class="story-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+                                <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+                            </svg>
+                        </div>
+                        <h3>Artisanal Craftsmanship</h3>
+                        <p>Each product is handcrafted in small batches by our master formulators, ensuring uncompromising quality and attention to detail.</p>
+                    </div>
+                    
+                    <a href="#" class="btn btn-outline">Learn More About Our Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="subtitle">CUSTOMER EXPERIENCES</div>
+                <h2>What Our Clients Say</h2>
+            </div>
+            
+            <div class="testimonials-carousel fade-in">
+                <div class="testimonials-track" style="transform: translateX(0);">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">The Lavender & Sea Salt Soak has transformed my evening ritual. The aroma is pure and authentic, and my skin feels incredibly nourished. LUMIÈRE has mastered the art of natural luxury.</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sophia Laurent">
+                                </div>
+                                <div class="testimonial-name">Sophia Laurent</div>
+                                <div class="testimonial-info">Paris, France</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide" style="display: none;">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">As someone with sensitive skin, finding truly natural products that work has been a challenge. The Rejuvenating Rose Facial Oil has not only calmed my skin but given it a radiance I've never experienced before.</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alexander Cohen">
+                                </div>
+                                <div class="testimonial-name">Alexander Cohen</div>
+                                <div class="testimonial-info">New York, USA</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide" style="display: none;">
+                        <div class="testimonial-card">
+                            <p class="testimonial-quote">The attention to detail in every aspect—from the sustainable packaging to the complex, layered scents—shows a true commitment to excellence. LUMIÈRE products are now staples in my home.</p>
+                            <div class="testimonial-author">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emma Nakamura">
+                                </div>
+                                <div class="testimonial-name">Emma Nakamura</div>
+                                <div class="testimonial-info">Tokyo, Japan</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonials-dots">
+                    <div class="testimonials-dot active"></div>
+                    <div class="testimonials-dot"></div>
+                    <div class="testimonials-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Membership Section -->
+    <section class="section membership">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="subtitle">EXCLUSIVE BENEFITS</div>
+                <h2>Join Our Membership Program</h2>
+                <p>Become part of our community and enjoy exclusive benefits tailored to enhance your LUMIÈRE experience.</p>
+            </div>
+            
+            <div class="membership-tiers fade-in">
+                <!-- Tier 1 -->
+                <div class="tier-card">
+                    <div class="tier-header">
+                        <div class="tier-name">Essential</div>
+                        <div class="tier-price">
+                            <span class="tier-amount">$9</span>
+                            <span class="tier-period">/month</span>
+                        </div>
+                        <div class="tier-description">Perfect for those beginning their natural beauty journey.</div>
+                    </div>
+                    
+                    <ul class="tier-features">
+                        <li class="tier-feature">10% off all products</li>
+                        <li class="tier-feature">Monthly newsletter with expert tips</li>
+                        <li class="tier-feature">Birthday gift (up to $25 value)</li>
+                        <li class="tier-feature">Early access to seasonal collections</li>
+                    </ul>
+                    
+                    <div class="tier-actions">
+                        <button class="btn btn-outline btn-block">Join Now</button>
+                    </div>
+                </div>
+                
+                <!-- Tier 2 -->
+                <div class="tier-card featured">
+                    <div class="tier-header">
+                        <div class="tier-name">Radiance</div>
+                        <div class="tier-price">
+                            <span class="tier-amount">$19</span>
+                            <span class="tier-period">/month</span>
+                        </div>
+                        <div class="tier-description">Our most popular membership with premium benefits.</div>
+                    </div>
+                    
+                    <ul class="tier-features">
+                        <li class="tier-feature">15% off all products</li>
+                        <li class="tier-feature">Quarterly luxury sample box</li>
+                        <li class="tier-feature">Complimentary shipping on all orders</li>
+                        <li class="tier-feature">Exclusive member-only products</li>
+                        <li class="tier-feature">Virtual consultation with our experts</li>
+                    </ul>
+                    
+                    <div class="tier-actions">
+                        <button class="btn btn-primary btn-block">Join Now</button>
+                    </div>
+                </div>
+                
+                <!-- Tier 3 -->
+                <div class="tier-card">
+                    <div class="tier-header">
+                        <div class="tier-name">Luminary</div>
+                        <div class="tier-price">
+                            <span class="tier-amount">$39</span>
+                            <span class="tier-period">/month</span>
+                        </div>
+                        <div class="tier-description">The ultimate luxury experience for connoisseurs.</div>
+                    </div>
+                    
+                    <ul class="tier-features">
+                        <li class="tier-feature">20% off all products</li>
+                        <li class="tier-feature">Monthly full-size product delivery</li>
+                        <li class="tier-feature">Priority access to limited editions</li>
+                        <li class="tier-feature">Personalized aromatherapy consultation</li>
+                        <li class="tier-feature">Exclusive events and masterclasses</li>
+                        <li class="tier-feature">Concierge service for custom orders</li>
+                    </ul>
+                    
+                    <div class="tier-actions">
+                        <button class="btn btn-outline btn-block">Join Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-inner">
+                <div class="newsletter-content fade-in">
+                    <h2 class="newsletter-title">Join Our Community</h2>
+                    <p class="newsletter-subtitle">Subscribe to receive exclusive offers, early access to new releases, and expert wellness guidance.</p>
+                </div>
+                
+                <form class="newsletter-form fade-in">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-widget">
+                    <a href="#" class="footer-logo">LUMIÈRE</a>
+                    <p class="footer-text">Crafting luxurious natural beauty and aromatherapy products that nourish the body and elevate the spirit.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">Shop</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">All Products</a></li>
+                        <li class="footer-link"><a href="#">Bath & Body</a></li>
+                        <li class="footer-link"><a href="#">Facial Care</a></li>
+                        <li class="footer-link"><a href="#">Essential Oils</a></li>
+                        <li class="footer-link"><a href="#">Gift Sets</a></li>
+                        <li class="footer-link"><a href="#">New Arrivals</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">Company</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Our Story</a></li>
+                        <li class="footer-link"><a href="#">Sustainability</a></li>
+                        <li class="footer-link"><a href="#">Ingredient Sourcing</a></li>
+                        <li class="footer-link"><a href="#">Journal</a></li>
+                        <li class="footer-link"><a href="#">Press</a></li>
+                        <li class="footer-link"><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Contact Us</a></li>
+                        <li class="footer-link"><a href="#">FAQs</a></li>
+                        <li class="footer-link"><a href="#">Shipping & Returns</a></li>
+                        <li class="footer-link"><a href="#">Store Locator</a></li>
+                        <li class="footer-link"><a href="#">Terms & Conditions</a></li>
+                        <li class="footer-link"><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">© 2025 LUMIÈRE. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#" class="footer-legal-link">Terms of Service</a>
+                    <a href="#" class="footer-legal-link">Privacy Policy</a>
+                    <a href="#" class="footer-legal-link">Cookie Policy</a>
+                    <a href="#" class="footer-legal-link">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const html = document.documentElement;
+            const toggle = document.getElementById('theme-toggle');
+            
+            // Check stored preference or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const initialTheme = savedTheme || (systemPrefersDark ? 'night' : 'day');
+            
+            // Apply initial theme
+            html.dataset.theme = initialTheme;
+            toggle.textContent = initialTheme === 'night' ? '☀️' : '☾';
+            
+            // Handle toggle click
+            toggle.addEventListener('click', function() {
+                const newTheme = html.dataset.theme === 'night' ? 'day' : 'night';
+                html.dataset.theme = newTheme;
+                localStorage.setItem('theme', newTheme);
+                toggle.textContent = newTheme === 'night' ? '☀️' : '☾';
+            });
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavClose = document.querySelector('.mobile-nav-close');
+            
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            mobileNavClose.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Scroll Header
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Testimonials Carousel
+            const track = document.querySelector('.testimonials-track');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonials-dot');
+            let currentIndex = 0;
+            
+            function goToSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.display = i === index ? 'block' : 'none';
+                });
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                currentIndex = index;
+            }
+            
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+            });
+            
+            // Auto advance slides
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                goToSlide(nextIndex);
+            }, 5000);
+            
+            // Fade in elements on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Collection Tabs
+            const collectionTabs = document.querySelectorAll('.collection-tab');
+            
+            collectionTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    collectionTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    // In a real implementation, this would filter products
+                });
+            });
+        });
+    </script>
+</body>
+</html>
