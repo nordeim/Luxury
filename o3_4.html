@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Luminaire • Botanical Luxury & Aromatherapy</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ╔══════════════════ 1. THEME TOKENS ══════════════════╗ */
+:root{
+  --bg:#f9f8f4;
+  --text:#111;
+  --accent:#d4af37;
+  --accent-2:#efe4c5;
+  --card:#ffffff;
+  --card-alt:#f3f2ef;
+  --radius:0.75rem;
+  color-scheme:light;
+}
+html[data-theme="night"]{
+  --bg:#0c0c0c;
+  --text:#e6e6e6;
+  --accent:#1f7a5b;
+  --accent-2:#2e9a75;
+  --card:#151515;
+  --card-alt:#1a1a1a;
+  color-scheme:dark;
+}
+
+/* ╔══════════════════ 2. GLOBAL RESET ══════════════════╗ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);
+  line-height:1.6;overflow-x:hidden;scroll-behavior:smooth;
+}
+h1,h2,h3,h4{font-family:'Cinzel',serif;line-height:1.2;font-weight:700;}
+img,video{display:block;max-width:100%;height:auto;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;border:none;background:none;cursor:pointer;color:inherit;}
+section{padding:4rem 1rem;}
+.container{max-width:1250px;margin-inline:auto;}
+
+/* ╔══════════════════ 3. HEADER (GLASS) ════════════════╗ */
+.site-header{
+  position:fixed;inset:0 0 auto;z-index:999;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.85rem 1.25rem;
+  backdrop-filter:blur(18px) saturate(180%);
+  background:rgba(255,255,255,.22);
+  border-bottom:1px solid rgba(255,255,255,.3);
+  transition:background .4s ease;
+}
+html[data-theme="night"] .site-header{
+  background:rgba(12,12,12,.35);border-bottom:1px solid rgba(255,255,255,.08);
+}
+.logo{font-size:1.35rem;letter-spacing:2px;white-space:nowrap;}
+.primary-nav{display:none;gap:2rem;}
+.primary-nav a{padding:.25rem 0;position:relative;}
+.primary-nav a::after{
+  content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;
+  background:var(--accent);transition:width .3s ease;
+}
+.primary-nav a:hover::after{width:100%;}
+.nav-right{display:flex;align-items:center;gap:1.25rem;font-size:1.25rem;}
+.cart-link{position:relative;}
+.cart-count{
+  position:absolute;top:-6px;right:-10px;font-size:.7rem;
+  background:var(--accent);color:#fff;padding:0 5px;border-radius:999px;
+}
+.theme-toggle{line-height:1;font-size:1.3rem;}
+/* tablet+ */
+@media(min-width:700px){.primary-nav{display:flex;}}
+
+/* ╔══════════════ 4. HERO WITH PARALLAX & PARTICLES ═════╗ */
+.hero{
+  position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;isolation:isolate;
+}
+.hero video,.hero .hero-img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  will-change:transform;
+  animation:slowZoom 40s ease-in-out infinite alternate;
+  filter:brightness(60%);
+}
+@keyframes slowZoom{from{transform:scale(1);}to{transform:scale(1.1);}}
+/* fragrance “mist” particles */
+.particle{
+  position:absolute;bottom:-60px;width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.6);filter:blur(2px);
+  animation:rise 12s linear infinite;
+}
+@keyframes rise{
+  0%{transform:translateY(0) scale(var(--s,1));opacity:1;}
+  100%{transform:translateY(-120vh) scale(calc(var(--s,1)*1.8));opacity:0;}
+}
+.hero-content{
+  position:relative;z-index:2;text-align:center;color:#fff;
+  padding:0 1.5rem;display:flex;flex-direction:column;gap:1.5rem;
+  animation:fadeDown 1.2s ease-out .3s both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  background:linear-gradient(115deg,var(--accent),#ffffff 60%);background-clip:text;-webkit-background-clip:text;color:transparent;
+}
+.btn-primary{
+  background:var(--accent);color:#fff;padding:1rem 2.8rem;border-radius:50px;
+  box-shadow:0 6px 16px rgb(0 0 0 /25%);
+  transition:transform .25s cubic-bezier(.2,1,.3,1),box-shadow .25s;
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgb(0 0 0 /30%);}
+.btn-primary:active{transform:translateY(0);box-shadow:0 6px 16px rgb(0 0 0 /22%);}
+.scroll-cue{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  width:24px;height:40px;border:2px solid #fff;border-radius:12px;
+}
+.scroll-cue::after{
+  content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:4px;height:6px;background:#fff;border-radius:2px;
+  animation:scroll 2s infinite;
+}
+@keyframes scroll{0%{opacity:0;transform:translate(-50%,0);}50%{opacity:1;}100%{opacity:0;transform:translate(-50%,10px);}}
+
+/* ╔══════════════ 5. SECTION ANIMATION HELPERS ══════════╗ */
+.reveal{opacity:0;transform:translateY(18px);transition:all .7s ease-out;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ╔════════════════ 6. BESTSELLERS GRID ═════════════════╗ */
+.bestsellers .grid{
+  display:grid;gap:1.7rem;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+}
+.card{
+  background:var(--card);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 3px 10px rgb(0 0 0 /10%);
+  transition:transform .45s cubic-bezier(.2,1,.22,1),box-shadow .45s;
+  position:relative;
+}
+.card:hover{
+  transform:translateY(-8px) rotateX(4deg);box-shadow:0 18px 32px rgb(0 0 0 /12%);
+}
+.card img{aspect-ratio:3/4;object-fit:cover;}
+.card-body{padding:1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem;}
+.card-title{font-family:'Playfair Display',serif;font-size:1.15rem;}
+.price{font-weight:700;}
+.add-btn{align-self:flex-start;margin-top:auto;font-size:.9rem;
+  background:var(--accent);color:#fff;padding:.45rem 1.2rem;border-radius:30px;}
+
+/* ╔══════════════ 7. STORY SPLIT / PARALLAX IMAGE ═══════╗ */
+.story-wrap{display:flex;flex-direction:column-reverse;gap:2.3rem;align-items:center;}
+.story-img{flex:1;max-width:580px;border-radius:var(--radius);
+  box-shadow:0 8px 28px rgb(0 0 0 /15%);
+  will-change:transform;transition:transform 1s ease-out;
+}
+.story-text{flex:1;max-width:640px;}
+.story-text p{font-family:'Playfair Display',serif;font-style:italic;margin-bottom:1rem;}
+@media(min-width:1050px){.story-wrap{flex-direction:row;}}
+
+/* ╔════════════ 8. CAROUSEL (Testimonials) ══════════════╗ */
+.carousel{position:relative;overflow:hidden;}
+.carousel-track{
+  display:flex;gap:1rem;overflow-x:auto;scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;padding-bottom:1rem;
+}
+.carousel::-webkit-scrollbar{display:none;}
+.testimonial{
+  flex:0 0 100%;scroll-snap-align:center;background:var(--card-alt);
+  padding:2.5rem 1.2rem;text-align:center;border-radius:var(--radius);
+}
+.testimonial blockquote{font-family:'Playfair Display',serif;font-size:1.25rem;margin-bottom:1.1rem;}
+.testimonial cite{font-size:.9rem;opacity:.8;}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:2.4rem;height:2.4rem;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent);color:#fff;font-size:1.1rem;
+}
+.carousel-btn.prev{left:.5rem;} .carousel-btn.next{right:.5rem;}
+
+/* ╔══════════════ 9. MEMBERSHIP TIERS ═══════════════════╗ */
+.tiers{display:grid;gap:1.7rem;margin-top:2rem;}
+.tiers article{
+  background:var(--card);padding:2.2rem;border-radius:var(--radius);
+  text-align:center;box-shadow:0 4px 14px rgb(0 0 0 /10%);
+  display:flex;flex-direction:column;gap:1rem;transition:transform .4s;
+}
+.tiers h3{font-size:1.45rem;}
+.tiers ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;font-size:.92rem;}
+.tiers article:hover{transform:translateY(-6px);}
+@media(min-width:840px){.tiers{grid-template-columns:repeat(3,1fr);}}
+
+/* ╔══════════════ 10. NEWSLETTER BANNER ═════════════════╗ */
+.newsletter{
+  background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  color:#000;border-radius:var(--radius);text-align:center;padding:3.5rem 1rem;
+}
+.newsletter input{
+  border:none;border-radius:30px;padding:.8rem 1rem;font-size:.9rem;width:260px;max-width:100%;
+}
+.newsletter button{
+  background:#000;color:#fff;border-radius:30px;padding:.8rem 1.5rem;font-size:.9rem;
+}
+.newsletter form{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:1.2rem;}
+
+/* ╔════════════ 11. FOOTER ══════════════════════════════╗ */
+footer{background:var(--card-alt);margin-top:4rem;padding:3rem 1rem;}
+.footer-grid{display:grid;gap:2rem;max-width:1250px;margin-inline:auto;}
+.footer-col h4{font-family:'Cinzel',serif;font-size:1rem;margin-bottom:.75rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;font-size:.9rem;}
+.social{display:flex;gap:1.1rem;font-size:1.25rem;margin-top:1rem;}
+.social a{transition:color .3s;}
+.social a:hover{color:var(--accent);}
+@media(min-width:650px){.footer-grid{grid-template-columns:repeat(4,1fr);}}
+
+/* ╔════════════ 12. MEDIA QUERIES SMALL TWEAKS ══════════╗ */
+@media(min-width:500px){.hero h1{font-size:clamp(3rem,5vw,4.2rem);}}
+
+/* ╔════════════ END CSS ══════════════════════════════════╗ */
+</style>
+</head>
+<body>
+
+<!-- ╔══════════ HEADER ══════════╗ -->
+<header class="site-header" id="top">
+  <a href="#" class="logo">LUMINAIRE</a>
+
+  <nav class="primary-nav" aria-label="Primary">
+    <a href="#shop">Shop</a>
+    <a href="#rituals">Rituals</a>
+    <a href="#journal">Journal</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <div class="nav-right">
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">☾</button>
+    <a href="#" class="cart-link" aria-label="Cart">🛍️<span class="cart-count" aria-hidden="true">2</span></a>
+  </div>
+</header>
+
+<!-- ╔══════════ HERO ══════════╗ -->
+<section class="hero" id="home">
+  <!-- Replace sources with your own high-res MP4 / poster -->
+  <video autoplay muted loop playsinline>
+    <source src="https://cdn.coverr.co/videos/coverr-aroma-therapy-6221/1080p.mp4" type="video/mp4">
+  </video>
+
+  <!-- floating fragrance particles -->
+  <script>
+    // generate 24 particles with random vars
+    document.addEventListener('DOMContentLoaded',()=>{
+      const hero=document.querySelector('.hero');
+      for(let i=0;i<24;i++){
+        const p=document.createElement('span');
+        p.className='particle';
+        p.style.left=`${Math.random()*100}%`;
+        p.style.animationDelay=`${Math.random()*-12}s`;
+        p.style.setProperty('--s',Math.random()*0.8+0.4);
+        hero.appendChild(p);
+      }
+    });
+  </script>
+
+  <div class="hero-content">
+    <h1>Nurture the&nbsp;Senses</h1>
+    <p>Hand-crafted botanical rituals for skin, body & mind.</p>
+    <a href="#shop" class="btn-primary">Explore Collection</a>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<main>
+  <!-- ╔══════════ BESTSELLERS ══════════╗ -->
+  <section id="shop" class="bestsellers container reveal">
+    <h2>Bestsellers</h2>
+    <div class="grid">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1585305575219-f3dfc48e292b?auto=format&fit=crop&w=500&q=80" alt="Rose Geranium Soap Bar">
+        <div class="card-body">
+          <h3 class="card-title">Rose Geranium Soap</h3>
+          <span class="price">$22</span>
+          <button class="add-btn">Add&nbsp;to&nbsp;Cart</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1616220722363-6e744f701e90?auto=format&fit=crop&w=500&q=80" alt="Lavender Serenity Oil Blend">
+        <div class="card-body">
+          <h3 class="card-title">Lavender Serenity Oil</h3>
+          <span class="price">$38</span>
+          <button class="add-btn">Add&nbsp;to&nbsp;Cart</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1629113663868-52c209300dd9?auto=format&fit=crop&w=500&q=80" alt="Citrus Bloom Hand Cream">
+        <div class="card-body">
+          <h3 class="card-title">Citrus Bloom Cream</h3>
+          <span class="price">$28</span>
+          <button class="add-btn">Add&nbsp;to&nbsp;Cart</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=500&q=80" alt="Sandalwood Candle">
+        <div class="card-body">
+          <h3 class="card-title">Sandalwood Candle</h3>
+          <span class="price">$45</span>
+          <button class="add-btn">Add&nbsp;to&nbsp;Cart</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ╔══════════ STORY SECTION ══════════╗ -->
+  <section id="about" class="container reveal">
+    <div class="story-wrap">
+      <img src="https://images.unsplash.com/photo-1583511655629-3128b932f49c?auto=format&fit=crop&w=900&q=80"
+           alt="Apothecary crafting natural skincare" class="story-img parallax">
+      <div class="story-text">
+        <h2>Our Holistic Philosophy</h2>
+        <p>Every Luminaire formula begins at the source: pristine soil, fair-trade harvests, and time-honoured extraction methods. We collaborate with regenerative farms and artisanal distillers to secure the planet’s rarest botanicals.</p>
+        <p>Small-batch manufacturing ensures optimal freshness and potency—so each ritual delivers tangible results and a moment of daily, mindful luxury.</p>
+        <a href="#" class="btn-primary">Discover&nbsp;Our&nbsp;Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ╔══════════ TESTIMONIALS ══════════╗ -->
+  <section class="container reveal">
+    <h2>In Their Words</h2>
+    <div class="carousel" role="region" aria-label="Testimonials">
+      <button class="carousel-btn prev" aria-label="Previous testimonial">&lt;</button>
+      <div class="carousel-track" id="track">
+        <article class="testimonial">
+          <blockquote>“The Serenity Oil changed my nights—two drops and the world melts away.”</blockquote>
+          <cite>— Sophia&nbsp;C., New&nbsp;York</cite>
+        </article>
+        <article class="testimonial">
+          <blockquote>“No candle rivals Luminaire’s Sandalwood—the depth, the throw, perfection.”</blockquote>
+          <cite>— Marc&nbsp;D., Paris</cite>
+        </article>
+        <article class="testimonial">
+          <blockquote>“I feel part of a purpose-driven story every time I unbox a product.”</blockquote>
+          <cite>— Aisha&nbsp;R., Dubai</cite>
+        </article>
+      </div>
+      <button class="carousel-btn next" aria-label="Next testimonial">&gt;</button>
+    </div>
+  </section>
+
+  <!-- ╔══════════ MEMBERSHIP ══════════╗ -->
+  <section class="container reveal">
+    <h2>Membership Tiers</h2>
+    <div class="tiers">
+      <article>
+        <h3>Lite</h3>
+        <ul>
+          <li>Early product access</li>
+          <li>Birthday gift</li>
+          <li>Member newsletter</li>
+        </ul>
+        <button class="btn-primary">Join Free</button>
+      </article>
+
+      <article>
+        <h3>Essential</h3>
+        <ul>
+          <li>All Lite perks</li>
+          <li>Free shipping</li>
+          <li>Reward points</li>
+        </ul>
+        <button class="btn-primary">Join $49/yr</button>
+      </article>
+
+      <article>
+        <h3>Luminary&nbsp;✨</h3>
+        <ul>
+          <li>All Essential perks</li>
+          <li>Quarterly ritual box</li>
+          <li>Concierge consults</li>
+        </ul>
+        <button class="btn-primary">Join $199/yr</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- ╔══════════ NEWSLETTER ══════════╗ -->
+  <section class="newsletter container reveal">
+    <h2>Stay in the Glow</h2>
+    <p>Insider launches, rituals, and 10% off your first order.</p>
+    <form>
+      <input type="email" aria-label="Email address" placeholder="you@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+</main>
+
+<!-- ╔══════════ FOOTER ══════════╗ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Shipping & Returns</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social">
+        <a href="#" aria-label="Instagram">📸</a>
+        <a href="#" aria-label="Facebook">📘</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ╔══════════ JAVASCRIPT ══════════╗ -->
+<script>
+/* 1. Theme Toggle  ******************************************************/
+const html=document.documentElement, toggle=document.getElementById('theme-toggle');
+const saved=localStorage.getItem('theme');
+if(saved){html.dataset.theme=saved;toggle.textContent=saved==='night'?'☀️':'☾';}
+else if(matchMedia('(prefers-color-scheme: dark)').matches){html.dataset.theme='night';toggle.textContent='☀️';}
+toggle.addEventListener('click',()=>{
+  const t=html.dataset.theme==='night'?'day':'night';
+  html.dataset.theme=t;localStorage.setItem('theme',t);
+  toggle.textContent=t==='night'?'☀️':'☾';
+});
+
+/* 2. Reveal on Scroll ***************************************************/
+const observer=new IntersectionObserver((e)=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');observer.unobserve(el.target);}}),{threshold:.22});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* 3. Parallax on Story Image *******************************************/
+const parallaxImg=document.querySelector('.story-img');
+if(parallaxImg){
+  window.addEventListener('scroll',()=>{
+    const rect=parallaxImg.getBoundingClientRect();
+    const offset=rect.top+rect.height/2-window.innerHeight/2;
+    parallaxImg.style.transform=`translateY(${offset*-.08}px)`;
+  });
+}
+
+/* 4. Simple Carousel ****************************************************/
+const track=document.getElementById('track');
+document.querySelector('.carousel-btn.next').onclick=()=>track.scrollBy({left:track.clientWidth,behavior:'smooth'});
+document.querySelector('.carousel-btn.prev').onclick=()=>track.scrollBy({left:-track.clientWidth,behavior:'smooth'});
+</script>
+</body>
+</html>
