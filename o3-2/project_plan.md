@@ -482,4 +482,3 @@ Following this granular plan ensures that a junior developer can deliver **Lumin
 
 Happy coding & may your console stay green!  
 _Luminaire Core Team_
-```
