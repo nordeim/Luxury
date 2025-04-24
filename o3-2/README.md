@@ -1,4 +1,3 @@
-```markdown
 <!--
   README LENGTH CHECK (approx):
   Avg. English words ≈ 5 characters + 1 space ≈ 6 chars.
@@ -316,4 +315,3 @@ Attribution appreciated but not required. Donate a 🌟 star if this repo helps 
 * Hero macro-video courtesy of [Coverr](https://coverr.co/). Unsplash photos by _Kelly Sikkema_, _Chelsea Shapouri_, and _Jill Heyer_.  
 
 <p align="center"><i>“Crafted with calmness; coded with care.” — The Luminaire Team</i></p>
-```
